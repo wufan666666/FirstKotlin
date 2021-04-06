@@ -154,6 +154,29 @@ fun main(args: Array<String>) {
     for (item in list.indices){
         println("list$item=${list.get(item)}")
     }
+    println(reverse(-123))
+}
+
+fun reverse(x: Int): Int {
+    var y:Int
+    return try {
+        if (x >= 0) {
+            val s = x.toString()
+            val stringBuilder = StringBuilder(s)
+            val reverse = stringBuilder.reverse()
+            val i=reverse.toString().toInt()
+            i
+        } else {
+            y = -x
+            val s = y.toString()
+            val stringBuilder = StringBuilder(s)
+            val reverse = stringBuilder.reverse()
+            val i = reverse.toString().toInt()
+            -i
+        }
+    } catch (e: NumberFormatException) {
+        0
+    }
 }
 
 
