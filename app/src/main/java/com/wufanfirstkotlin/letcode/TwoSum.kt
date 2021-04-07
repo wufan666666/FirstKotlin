@@ -80,7 +80,7 @@ class TwoSum {
             if (temp > Int.MAX_VALUE / 10 || temp == Int.MAX_VALUE / 10 && res == 7) return 0
             if (temp < Int.MIN_VALUE / 10 || temp == Int.MIN_VALUE / 10 && res == -8) return 0
             temp = temp * 10 + res
-            x = x / 10
+            x /= 10
         }
         return temp
     }
@@ -116,26 +116,26 @@ class TwoSum {
         var h:String
         var temp = 0
         h = s.replace("IV", "A")
-        h = s.replace("IX", "B")
-        h = s.replace("XL", "H")
-        h = s.replace("XC", "Q")
-        h = s.replace("CD", "E")
-        h = s.replace("CM", "F")
+        h = h.replace("IX", "B")
+        h = h.replace("XL", "H")
+        h = h.replace("XC", "Q")
+        h = h.replace("CD", "E")
+        h = h.replace("CM", "F")
         for (i in 0 until s.length) {
             when (s[i]) {
-                'I' -> temp = temp + 1
-                'V' -> temp = temp + 5
-                'X' -> temp = temp + 10
-                'L' -> temp = temp + 50
-                'C' -> temp = temp + 100
-                'D' -> temp = temp + 500
-                'M' -> temp = temp + 1000
-                'A' -> temp = temp + 4
-                'B' -> temp = temp + 9
-                'E' -> temp = temp + 400
-                'F' -> temp = temp + 900
-                'H' -> temp = temp + 40
-                'Q' -> temp = temp + 90
+                'I' -> temp += 1
+                'V' -> temp += 5
+                'X' -> temp += 10
+                'L' -> temp += 50
+                'C' -> temp += 100
+                'D' -> temp += 500
+                'M' -> temp += 1000
+                'A' -> temp += 4
+                'B' -> temp += 9
+                'E' -> temp += 400
+                'F' -> temp += 900
+                'H' -> temp += 40
+                'Q' -> temp += 90
             }
         }
         return temp
@@ -151,7 +151,7 @@ class TwoSum {
 
     fun isPalindrome(x: Int): Boolean {
         var x = x
-        var temp = 0
+        var temp: Int
         var temp2 = 0
         val temp3 = x
         if (x < 0) {
@@ -159,7 +159,7 @@ class TwoSum {
         }
         while (x != 0) {
             temp = x % 10
-            x = x / 10
+            x /= 10
             temp2 = temp + temp2 * 10
         }
         return temp2 == temp3

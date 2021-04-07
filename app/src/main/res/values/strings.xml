@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FirstKotlin</string>
+    <string name="webview">webView</string>
 </resources>
