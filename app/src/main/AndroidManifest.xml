@@ -16,6 +16,7 @@
         <activity android:name=".fragment.FragmentActivity"
             ></activity>
         <activity android:name=".Service.ServiceIntentActivity" />
+        <activity android:name=".fragment.pagerViewFragment.FragmentPagerActivity" />
 
         <service
             android:name=".Service.VolumeService"
