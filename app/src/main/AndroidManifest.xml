@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/left"
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstKotlin">
-        <activity android:name=".Service.ServiceIntentActivity"></activity>
+        <activity android:name=".fragment.FragmentActivity"
+            ></activity>
+        <activity android:name=".Service.ServiceIntentActivity" />
 
         <service
             android:name=".Service.VolumeService"

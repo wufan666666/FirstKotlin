@@ -8,6 +8,7 @@ import android.widget.Button
 import com.wufanfirstkotlin.Service.ServiceIntentActivity
 import com.wufanfirstkotlin.Service.ServiceJavaActivity
 import com.wufanfirstkotlin.broadcast.BroadCastActivity
+import com.wufanfirstkotlin.fragment.FragmentActivity
 import com.wufanfirstkotlin.viewPractice.CheckBoxActivity
 import com.wufanfirstkotlin.viewPractice.DatePickerActivity
 import com.wufanfirstkotlin.viewPractice.DialogActivity
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var broadcast: Button
     private lateinit var service: Button
     private lateinit var intentservice: Button
+    private lateinit var fragment: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         broadcast = findViewById(R.id.broadcast)
         service = findViewById(R.id.service)
         intentservice = findViewById(R.id.intent_service)
+        fragment = findViewById(R.id.fragment)
         webviewbt.setOnClickListener(this)
         dialog.setOnClickListener(this)
         checkbox.setOnClickListener(this)
@@ -40,6 +43,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         broadcast.setOnClickListener(this)
         service.setOnClickListener(this)
         intentservice.setOnClickListener(this)
+        fragment.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -57,6 +61,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.service -> startActivity(Intent(this, ServiceJavaActivity::class.java))
 
             R.id.intent_service -> startActivity(Intent(this, ServiceIntentActivity::class.java))
+
+            R.id.fragment -> startActivity(Intent(this, FragmentActivity::class.java))
 
 
         }
