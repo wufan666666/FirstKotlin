@@ -1,6 +1,4 @@
-package com.wufanfirstkotlin.yufalianxi
-
-import java.lang.Integer.parseInt
+package com.wufanfirstkotlin.viewPractice
 
 
 /*

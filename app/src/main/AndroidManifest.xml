@@ -28,10 +28,10 @@
         <activity
             android:name=".broadcast.BroadCastActivity"
             android:launchMode="singleTask" />
-        <activity android:name=".yufalianxi.DatePickerActivity" />
-        <activity android:name=".yufalianxi.CheckBoxActivity" />
+        <activity android:name=".viewPractice.DatePickerActivity" />
+        <activity android:name=".viewPractice.CheckBoxActivity" />
         <activity android:name=".Service.ServiceJavaActivity" />
-        <activity android:name=".yufalianxi.DialogActivity" />
+        <activity android:name=".viewPractice.DialogActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,7 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".yufalianxi.WebViewActivity" />
+        <activity android:name=".viewPractice.WebViewActivity" />
     </application>
 
 </manifest>

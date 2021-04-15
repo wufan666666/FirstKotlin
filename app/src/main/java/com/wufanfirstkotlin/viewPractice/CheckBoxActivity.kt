@@ -1,17 +1,10 @@
-package com.wufanfirstkotlin.yufalianxi
+package com.wufanfirstkotlin.viewPractice
 
-import android.content.ComponentName
-import android.content.Intent
-import android.content.ServiceConnection
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.IBinder
-import android.view.View
 import android.widget.CheckBox
-import android.widget.CompoundButton
 import android.widget.Toast
 import com.wufanfirstkotlin.R
-import com.wufanfirstkotlin.Service.VolumeService
 
 class CheckBoxActivity : AppCompatActivity() {
 

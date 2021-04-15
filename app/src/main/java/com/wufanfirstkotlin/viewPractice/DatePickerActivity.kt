@@ -1,7 +1,6 @@
-package com.wufanfirstkotlin.yufalianxi
+package com.wufanfirstkotlin.viewPractice
 
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.DatePicker
 import android.widget.Toast

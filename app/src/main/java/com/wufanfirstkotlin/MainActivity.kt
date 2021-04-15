@@ -3,17 +3,15 @@ package com.wufanfirstkotlin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.DatePicker
 import com.wufanfirstkotlin.Service.ServiceIntentActivity
 import com.wufanfirstkotlin.Service.ServiceJavaActivity
 import com.wufanfirstkotlin.broadcast.BroadCastActivity
-import com.wufanfirstkotlin.yufalianxi.CheckBoxActivity
-import com.wufanfirstkotlin.yufalianxi.DatePickerActivity
-import com.wufanfirstkotlin.yufalianxi.DialogActivity
-import com.wufanfirstkotlin.yufalianxi.WebViewActivity
+import com.wufanfirstkotlin.viewPractice.CheckBoxActivity
+import com.wufanfirstkotlin.viewPractice.DatePickerActivity
+import com.wufanfirstkotlin.viewPractice.DialogActivity
+import com.wufanfirstkotlin.viewPractice.WebViewActivity
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 

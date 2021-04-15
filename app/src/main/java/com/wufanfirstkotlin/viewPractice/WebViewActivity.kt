@@ -1,4 +1,4 @@
-package com.wufanfirstkotlin.yufalianxi
+package com.wufanfirstkotlin.viewPractice
 
 import android.os.Bundle
 import android.webkit.WebView

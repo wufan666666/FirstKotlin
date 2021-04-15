@@ -38,10 +38,10 @@ class BroadcastTestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Log.e("tag","onCreate")
+        myBroadcast = MyBroadCast()
         setContentView(R.layout.activity_broadcast_test)
         getBroadCast = findViewById(R.id.getBroadCast)
         getBroadCast.setOnClickListener {
-            myBroadcast = MyBroadCast()
             var filter = IntentFilter()
             filter.addAction("sendEmptyBroadCast")
             registerReceiver(myBroadcast, filter)
@@ -79,7 +79,7 @@ class BroadcastTestActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.e("tag", "onDestroy+test")
-        unregisterReceiver(myBroadcast)
+        //unregisterReceiver(myBroadcast)
     }
 
 

@@ -54,10 +54,14 @@ class VolumeService : Service() {
         }.start()
     }
 
+    override fun onStart(intent: Intent?, startId: Int) {
+        Log.e("tag","onStart")
+        super.onStart(intent, startId)
+
+    }
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Log.e("tag","onStartCommand")
         return super.onStartCommand(intent, flags, startId)
-
     }
 
     override fun onRebind(intent: Intent?) {
