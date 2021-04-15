@@ -1,12 +1,17 @@
 package com.wufanfirstkotlin.yufalianxi
 
+import android.content.ComponentName
+import android.content.Intent
+import android.content.ServiceConnection
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.IBinder
 import android.view.View
 import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.Toast
 import com.wufanfirstkotlin.R
+import com.wufanfirstkotlin.Service.VolumeService
 
 class CheckBoxActivity : AppCompatActivity() {
 
@@ -26,6 +31,10 @@ class CheckBoxActivity : AppCompatActivity() {
         football.setOnClickListener(this)*/
         /*swimming.setOnCheckedChangeListener(this)
         basketball.setOnCheckedChangeListener(this)*/
+        /*stopService(Intent(this, VolumeService::class.java))
+        startService(Intent(this, VolumeService::class.java))
+        startService(Intent(this, VolumeService::class.java))*/
+
         basketball.setOnCheckedChangeListener { buttonView, isChecked -> if (basketball.isChecked) Toast.makeText(applicationContext, "choice "+basketball.text +" has picked", Toast.LENGTH_SHORT)
             .show() }
         swimming.setOnCheckedChangeListener { buttonView, isChecked -> if (swimming.isChecked) Toast.makeText(applicationContext, "choice "+swimming.text +" has picked", Toast.LENGTH_SHORT)

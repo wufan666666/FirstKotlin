@@ -9,9 +9,9 @@ import com.wufanfirstkotlin.R
 
 class DatePickerActivity : Activity() {
 
-    public var year: Int = 0
-    public var month: Int = 0
-    public var day: Int = 0
+    var year: Int = 0
+    var month: Int = 0
+    var day: Int = 0
     lateinit var datepicker: DatePicker
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +27,9 @@ class DatePickerActivity : Activity() {
                 this.day = dayOfMonth
                 Toast.makeText(
                     applicationContext,
-                    "" + this.year + "年" + (this.month + 1) + "月" + this.day+"日",
-                    Toast.LENGTH_SHORT).show()
+                    "" + this.year + "年" + (this.month + 1) + "月" + this.day + "日",
+                    Toast.LENGTH_SHORT
+                ).show()
             })
     }
 }

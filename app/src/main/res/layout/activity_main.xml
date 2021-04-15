@@ -32,5 +32,23 @@
         android:layout_height="wrap_content"
         android:text="datePicker"
         />
+    <Button
+        android:id="@+id/broadcast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="broadcast"
+        />
+
+    <Button
+        android:id="@+id/service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="service" />
+
+    <Button
+        android:id="@+id/intent_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="IntentService" />
 
 </LinearLayout>
