@@ -4,24 +4,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.wufanfirstkotlin.R;
-import com.wufanfirstkotlin.fragment.MyFragment;
-import com.wufanfirstkotlin.fragment.MyFragment1;
-import com.wufanfirstkotlin.fragment.MyFragment2;
-import com.wufanfirstkotlin.fragment.MyFragment3;
 
 /**
  * @author : wf

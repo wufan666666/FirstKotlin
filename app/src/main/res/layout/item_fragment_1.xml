@@ -14,5 +14,6 @@
         android:id="@+id/intent_pager_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="跳转带有Fragment的activity"/>
+        android:text="跳转带有Fragment的activity"
+        android:layout_below="@id/num"/>
 </RelativeLayout>

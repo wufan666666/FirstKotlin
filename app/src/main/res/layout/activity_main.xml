@@ -56,4 +56,10 @@
         android:layout_height="wrap_content"
         android:text="fragment" />
 
+    <Button
+        android:id="@+id/sqLite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sqlite" />
+
 </LinearLayout>
