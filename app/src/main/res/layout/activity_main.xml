@@ -62,4 +62,10 @@
         android:layout_height="wrap_content"
         android:text="Sqlite" />
 
+    <Button
+        android:id="@+id/http"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="http" />
+
 </LinearLayout>

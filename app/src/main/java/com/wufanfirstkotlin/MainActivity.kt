@@ -9,6 +9,7 @@ import com.wufanfirstkotlin.Service.ServiceIntentActivity
 import com.wufanfirstkotlin.Service.ServiceJavaActivity
 import com.wufanfirstkotlin.broadcast.BroadCastActivity
 import com.wufanfirstkotlin.fragment.FragmentActivity
+import com.wufanfirstkotlin.http.OkhttpActivity
 import com.wufanfirstkotlin.sqlite.SqliteActivity
 import com.wufanfirstkotlin.viewPractice.CheckBoxActivity
 import com.wufanfirstkotlin.viewPractice.DatePickerActivity
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var intentservice: Button
     private lateinit var fragment: Button
     private lateinit var sqLite: Button
+    private lateinit var http: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +41,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         intentservice = findViewById(R.id.intent_service)
         fragment = findViewById(R.id.fragment)
         sqLite = findViewById(R.id.sqLite)
+        http = findViewById(R.id.http)
         webviewbt.setOnClickListener(this)
         dialog.setOnClickListener(this)
         checkbox.setOnClickListener(this)
@@ -48,6 +51,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         intentservice.setOnClickListener(this)
         fragment.setOnClickListener(this)
         sqLite.setOnClickListener(this)
+        http.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -69,6 +73,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.fragment -> startActivity(Intent(this, FragmentActivity::class.java))
 
             R.id.sqLite -> startActivity(Intent(this, SqliteActivity::class.java))
+
+            R.id.http -> startActivity(Intent(this, OkhttpActivity::class.java))
 
 
         }

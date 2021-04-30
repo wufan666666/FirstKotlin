@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".MyApplication"
@@ -13,9 +16,10 @@
         android:roundIcon="@mipmap/left"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
-
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.FirstKotlin">
-        <activity android:name=".sqlite.SqliteActivity"></activity>
+        <activity android:name=".http.OkhttpActivity"></activity>
+        <activity android:name=".sqlite.SqliteActivity" />
         <activity android:name=".fragment.FragmentActivity" />
         <activity android:name=".Service.ServiceIntentActivity" />
         <activity android:name=".fragment.pagerViewFragment.FragmentPagerActivity" />
@@ -45,11 +49,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".viewPractice.WebViewActivity" />
+
         <uses-library android:name="android.test.runner" />
     </application>
-    <!--<instrumentation
-        android:name="android.test.InstrumentationTestRunner"
-        android:label="test"
-        android:targetPackage="c" />-->
 
 </manifest>
