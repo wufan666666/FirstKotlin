@@ -1,20 +1,38 @@
 package com.wufanfirstkotlin
 
+import android.Manifest
+import android.app.Activity
+import android.content.ContentUris
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.content.pm.PackageManager
+import android.database.Cursor
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.wufanfirstkotlin.Service.ServiceIntentActivity
 import com.wufanfirstkotlin.Service.ServiceJavaActivity
 import com.wufanfirstkotlin.broadcast.BroadCastActivity
+import com.wufanfirstkotlin.customView.CustomActivity
 import com.wufanfirstkotlin.fragment.FragmentActivity
 import com.wufanfirstkotlin.http.OkhttpActivity
+import com.wufanfirstkotlin.mvp.LoginMVPActivity
 import com.wufanfirstkotlin.sqlite.SqliteActivity
 import com.wufanfirstkotlin.viewPractice.CheckBoxActivity
 import com.wufanfirstkotlin.viewPractice.DatePickerActivity
 import com.wufanfirstkotlin.viewPractice.DialogActivity
 import com.wufanfirstkotlin.viewPractice.WebViewActivity
+import java.io.File
+import java.io.InputStream
+
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -28,6 +46,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var fragment: Button
     private lateinit var sqLite: Button
     private lateinit var http: Button
+    private lateinit var custom_view: Button
+    private lateinit var mvp_login: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +62,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         fragment = findViewById(R.id.fragment)
         sqLite = findViewById(R.id.sqLite)
         http = findViewById(R.id.http)
+        custom_view = findViewById(R.id.custom_view)
+        mvp_login = findViewById(R.id.mvp_login)
         webviewbt.setOnClickListener(this)
         dialog.setOnClickListener(this)
         checkbox.setOnClickListener(this)
@@ -52,6 +74,129 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         fragment.setOnClickListener(this)
         sqLite.setOnClickListener(this)
         http.setOnClickListener(this)
+        custom_view.setOnClickListener(this)
+        mvp_login.setOnClickListener(this)
+        testPermission(this)
+    }
+
+    private fun checkPermission(context: Context, checkList: Array<String>): List<String> {
+        val list: MutableList<String> = ArrayList()
+        for (i in checkList.indices) {
+            if (PackageManager.PERMISSION_GRANTED != ActivityCompat.checkSelfPermission(
+                    context,
+                    checkList[i]
+                )
+            ) {
+                list.add(checkList[i])
+            }
+        }
+        return list
+    }
+
+    //申请权限
+    private fun requestPermission(activity: Activity, requestPermissionList: Array<String>) {
+        //var requestPermissionList:Array<String> = arrayOf(requestPermissionList[1])
+        ActivityCompat.requestPermissions(activity, requestPermissionList, 100)
+    }
+
+    //用户作出选择后，返回申请的结果
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == 100) {
+            for (i in permissions.indices) {
+                if (permissions[i] == Manifest.permission.WRITE_EXTERNAL_STORAGE) {
+                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(this@MainActivity, "存储权限申请成功", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@MainActivity, "存储权限申请失败", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                }
+            }
+        }
+    }
+
+    //测试申请存储权限
+    private fun testPermission(activity: Activity) {
+        val checkList = arrayOf<String>(
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.INTERNET,
+            Manifest.permission.ACCESS_NETWORK_STATE,
+            Manifest.permission.ACCESS_WIFI_STATE,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+
+            )
+        val needRequestList = checkPermission(activity, checkList)
+        if (needRequestList.isEmpty()) {
+            //Toast.makeText(this@MainActivity, "无需申请权限", Toast.LENGTH_SHORT).show()
+        } else {
+            requestPermission(activity, needRequestList.toTypedArray())
+            Log.e("tag", needRequestList.toString())
+        }
+    }
+
+
+    private fun testShareMedia() {
+        //获取目录：/storage/emulated/0/
+        val rootFile: File = Environment.getExternalStorageDirectory()
+        val imagePath: String =
+            rootFile.getAbsolutePath() + File.separator + Environment.DIRECTORY_PICTURES + File.separator.toString() + "myPic.png"
+        val bitmap = BitmapFactory.decodeFile(imagePath)
+    }
+
+
+    private fun getImagePath(context: Context) {
+        val contentResolver = context.contentResolver
+        val cursor: Cursor? = contentResolver.query(
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            null,
+            null,
+            null,
+            null
+        )
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                val imagePath: String =
+                    cursor.getString(cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA))
+                val bitmap = BitmapFactory.decodeFile(imagePath)
+                break
+            }
+        }
+    }
+
+
+    private fun getImagePath2(context: Context) {
+        val contentResolver = context.contentResolver
+        val cursor = contentResolver.query(
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            null,
+            null,
+            null,
+            null
+        )
+        while (cursor!!.moveToNext()) {
+            //获取唯一的id
+            val id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.MediaColumns._ID))
+            //通过id构造Uri
+            val uri: Uri =
+                ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
+            openUri(uri)
+            break
+        }
+    }
+
+    private fun openUri(uri: Uri) {
+        try {
+            //从uri构造输入流
+            val fis: InputStream? = contentResolver.openInputStream(uri)
+            val bitmap = BitmapFactory.decodeStream(fis)
+        } catch (e: Exception) {
+        }
     }
 
     override fun onClick(v: View?) {
@@ -75,6 +220,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.sqLite -> startActivity(Intent(this, SqliteActivity::class.java))
 
             R.id.http -> startActivity(Intent(this, OkhttpActivity::class.java))
+
+            R.id.custom_view -> startActivity(Intent(this, CustomActivity::class.java))
+
+            R.id.mvp_login -> startActivity(Intent(this, LoginMVPActivity::class.java))
 
 
         }

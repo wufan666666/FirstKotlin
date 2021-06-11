@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.wufanfirstkotlin.BuildConfig;
 import com.wufanfirstkotlin.R;
 import com.wufanfirstkotlin.http.okhttp.IJsonDataListener;
 import com.wufanfirstkotlin.http.okhttp.MNokHttp;
@@ -19,6 +20,9 @@ import com.wufanfirstkotlin.http.okhttp.ResponseClass;
 
 import java.io.IOException;
 import java.lang.ref.SoftReference;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
+import java.util.logging.LoggingPermission;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -26,6 +30,9 @@ import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
 
 public class OkhttpActivity extends AppCompatActivity {
 
@@ -94,7 +101,40 @@ public class OkhttpActivity extends AppCompatActivity {
     }
 
     private void clickRetrofit() {
+        OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
+        okHttpClientBuilder.connectTimeout(DEFAULT_KEYS_DIALER, TimeUnit.SECONDS);
 
+        HttpLoggingInterceptor.Level  level= HttpLoggingInterceptor.Level.BODY;
+        HttpLoggingInterceptor httpLoggingInterceptor= new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+            @Override
+            public void log(String message) {
+                Log.e("zbc","OkHttp====Message:"+message);
+            }
+        });
+        httpLoggingInterceptor.setLevel(level);
+        okHttpClientBuilder.addInterceptor(httpLoggingInterceptor);
+
+        OkHttpClient okHttpClient = okHttpClientBuilder.build();
+
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://api.apiopen.top/")
+                            .client(okHttpClient)
+                            .build();
+        RetrofitService retrofitService = retrofit.create(RetrofitService.class);
+
+        retrofit2.Call<ResponseBody> video = retrofitService.getJoke(1, 1, "video");
+
+
+        video.enqueue(new retrofit2.Callback<ResponseBody>() {
+            @Override
+            public void onResponse(retrofit2.Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
     }
 
     private void clickOKhttp() {

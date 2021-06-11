@@ -164,14 +164,9 @@ public class FragmentPagerActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onPageScrollStateChanged(int state) {
-
-        if (state == 2) {
+        int statePick=2;
+        if (state == statePick) {
             switch (lyContent.getCurrentItem()) {
-                case 0:
-                    setSelected();
-                    topText.setText(alert.getText());
-                    alert.setSelected(true);
-                    break;
                 case 1:
                     setSelected();
                     topText.setText(message.getText());
@@ -186,6 +181,11 @@ public class FragmentPagerActivity extends AppCompatActivity implements View.OnC
                     setSelected();
                     topText.setText(setting.getText());
                     setting.setSelected(true);
+                    break;
+                default:
+                    setSelected();
+                    topText.setText(alert.getText());
+                    alert.setSelected(true);
                     break;
             }
         }

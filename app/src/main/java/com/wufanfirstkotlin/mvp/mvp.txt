@@ -1,0 +1,11 @@
+什么是mvc
+M：单纯的bean（Java bean）
+V：view 以及子类 --对应于布局文件
+C：activity及fragment
+
+MVP
+M：数据层,（数据库,文件操作,网络等。。。）
+V：view和activity以及fragment以及他们的子类
+P：中介（Presenter）
+
+MVP设计的目的：将UI层和数据层进行解耦和分离，各司其职

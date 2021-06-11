@@ -67,5 +67,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="http" />
+    <Button
+        android:id="@+id/custom_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="custom_view" />
+
+    <Button
+        android:id="@+id/mvp_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MVP的登录" />
 
 </LinearLayout>

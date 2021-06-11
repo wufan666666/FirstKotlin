@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MyApplication"
@@ -16,14 +18,18 @@
         android:roundIcon="@mipmap/left"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.FirstKotlin">
-        <activity android:name=".http.OkhttpActivity"></activity>
+        android:theme="@style/Theme.FirstKotlin"
+        android:usesCleartextTraffic="true">
+
+        <activity android:name=".customView.CustomActivity" />
+        <activity android:name=".http.OkhttpActivity" />
         <activity android:name=".sqlite.SqliteActivity" />
         <activity android:name=".fragment.FragmentActivity" />
         <activity android:name=".Service.ServiceIntentActivity" />
         <activity android:name=".fragment.pagerViewFragment.FragmentPagerActivity" />
-
+        <activity
+            android:name=".mvp.LoginMVPActivity"
+            android:label="@string/title_activity_login_m_v_p"></activity>
         <service
             android:name=".Service.VolumeService"
             android:enabled="true"
