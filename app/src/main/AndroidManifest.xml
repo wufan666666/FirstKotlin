@@ -20,16 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstKotlin"
         android:usesCleartextTraffic="true">
+        <activity android:name=".recycleview.RecycleViewActivity"></activity>
+        <activity android:name=".customView.SecondActivity" />
 
-        <activity android:name=".customView.CustomActivity" />
-        <activity android:name=".http.OkhttpActivity" />
-        <activity android:name=".sqlite.SqliteActivity" />
-        <activity android:name=".fragment.FragmentActivity" />
-        <activity android:name=".Service.ServiceIntentActivity" />
-        <activity android:name=".fragment.pagerViewFragment.FragmentPagerActivity" />
-        <activity
-            android:name=".mvp.LoginMVPActivity"
-            android:label="@string/title_activity_login_m_v_p"></activity>
         <service
             android:name=".Service.VolumeService"
             android:enabled="true"
@@ -39,7 +32,29 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".broadcast.BroadcastTestActivity" />
+        <activity android:name=".customView.CustomActivity" />
+        <activity android:name=".http.OkhttpActivity" />
+        <activity android:name=".sqlite.SqliteActivity" />
+        <activity android:name=".fragment.FragmentActivity" />
+        <activity android:name=".Service.ServiceIntentActivity" />
+        <activity android:name=".fragment.pagerViewFragment.FragmentPagerActivity" />
+        <activity
+            android:name=".mvp.LoginMVPActivity"
+            android:label="@string/title_activity_login_m_v_p">
+            <intent-filter>
+                <action android:name="com.wf.action" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".broadcast.BroadcastTestActivity">
+            <intent-filter>
+                <action android:name="com.wf.action.sa" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.APP_MUSIC" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".broadcast.BroadCastActivity"
             android:launchMode="singleTask" />

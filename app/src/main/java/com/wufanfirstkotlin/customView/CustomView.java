@@ -41,7 +41,7 @@ public class CustomView extends ViewGroup {
 
     /**
      * 在xml中布局时调用这个
-     *
+     * 通过这个构造函数,我们可以使用反射来获取XMl中的属性
      * @param context
      * @param attrs
      */
@@ -73,11 +73,11 @@ public class CustomView extends ViewGroup {
         //获取宽高的一种模式，布局的宽高都是由这个方法测量，
         int width = MeasureSpec.getMode(widthMeasureSpec);
         int height = MeasureSpec.getMode(heightMeasureSpec);
-        /*//在布局中指定了wrap_content match parent 最大不能超过父布局
+        /*//在布局中指定了  wrap_content
         if (width==MeasureSpec.AT_MOST){
 
         }
-        //在布局中指定了确切的值 100dp
+        // 在布局中指定了确切的值 100dp match parent 最大不能超过父布局
         if (width==MeasureSpec.EXACTLY){
 
         }
@@ -89,6 +89,7 @@ public class CustomView extends ViewGroup {
         int paddingLeft = getPaddingLeft();
         int paddingRight = getPaddingRight();
         int paddingBottom = getPaddingBottom();
+
         int selfWidth = MeasureSpec.getSize(widthMeasureSpec);
         int selfHeight = MeasureSpec.getSize(heightMeasureSpec);
 

@@ -78,5 +78,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="MVP的登录" />
+    <Button
+        android:id="@+id/recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RecycleView" />
 
 </LinearLayout>

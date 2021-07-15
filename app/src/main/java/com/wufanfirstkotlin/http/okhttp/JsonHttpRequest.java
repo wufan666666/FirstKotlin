@@ -1,14 +1,13 @@
 package com.wufanfirstkotlin.http.okhttp;
 
 import java.io.BufferedOutputStream;
-import java.io.IOException;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.security.auth.callback.Callback;
+
 
 /**
  * @author : wf
@@ -37,7 +36,7 @@ public class JsonHttpRequest  implements IHttpRequest{
     @Override
     public void execute() {
         //访问网络的具体操作
-        URL url = null;
+        URL url;
         try {
             url = new URL(this.url);
             urlConnection = (HttpURLConnection) url.openConnection();//打开http连接

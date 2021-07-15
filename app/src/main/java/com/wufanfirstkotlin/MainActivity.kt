@@ -18,6 +18,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.wufanfirstkotlin.Service.ServiceIntentActivity
 import com.wufanfirstkotlin.Service.ServiceJavaActivity
 import com.wufanfirstkotlin.broadcast.BroadCastActivity
@@ -25,6 +26,7 @@ import com.wufanfirstkotlin.customView.CustomActivity
 import com.wufanfirstkotlin.fragment.FragmentActivity
 import com.wufanfirstkotlin.http.OkhttpActivity
 import com.wufanfirstkotlin.mvp.LoginMVPActivity
+import com.wufanfirstkotlin.recycleview.RecycleViewActivity
 import com.wufanfirstkotlin.sqlite.SqliteActivity
 import com.wufanfirstkotlin.viewPractice.CheckBoxActivity
 import com.wufanfirstkotlin.viewPractice.DatePickerActivity
@@ -48,6 +50,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var http: Button
     private lateinit var custom_view: Button
     private lateinit var mvp_login: Button
+    private lateinit var recycleView: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +67,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         http = findViewById(R.id.http)
         custom_view = findViewById(R.id.custom_view)
         mvp_login = findViewById(R.id.mvp_login)
+        recycleView = findViewById(R.id.recycleView)
         webviewbt.setOnClickListener(this)
         dialog.setOnClickListener(this)
         checkbox.setOnClickListener(this)
@@ -76,6 +80,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         http.setOnClickListener(this)
         custom_view.setOnClickListener(this)
         mvp_login.setOnClickListener(this)
+        recycleView.setOnClickListener(this)
         testPermission(this)
     }
 
@@ -141,16 +146,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 
-    private fun testShareMedia() {
+   /* private fun testShareMedia() {
         //获取目录：/storage/emulated/0/
         val rootFile: File = Environment.getExternalStorageDirectory()
         val imagePath: String =
             rootFile.getAbsolutePath() + File.separator + Environment.DIRECTORY_PICTURES + File.separator.toString() + "myPic.png"
         val bitmap = BitmapFactory.decodeFile(imagePath)
-    }
+    }*/
 
 
-    private fun getImagePath(context: Context) {
+    /*private fun getImagePath(context: Context) {
         val contentResolver = context.contentResolver
         val cursor: Cursor? = contentResolver.query(
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
@@ -188,16 +193,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             openUri(uri)
             break
         }
-    }
+    }*/
 
-    private fun openUri(uri: Uri) {
+    /*private fun openUri(uri: Uri) {
         try {
             //从uri构造输入流
             val fis: InputStream? = contentResolver.openInputStream(uri)
             val bitmap = BitmapFactory.decodeStream(fis)
         } catch (e: Exception) {
         }
-    }
+    }*/
 
     override fun onClick(v: View?) {
         when (v?.id) {
@@ -224,6 +229,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.custom_view -> startActivity(Intent(this, CustomActivity::class.java))
 
             R.id.mvp_login -> startActivity(Intent(this, LoginMVPActivity::class.java))
+
+            R.id.recycleView -> startActivity(Intent(this, RecycleViewActivity::class.java))
 
 
         }

@@ -18,6 +18,9 @@ import com.wufanfirstkotlin.http.okhttp.IJsonDataListener;
 import com.wufanfirstkotlin.http.okhttp.MNokHttp;
 import com.wufanfirstkotlin.http.okhttp.ResponseClass;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.lang.ref.SoftReference;
 import java.util.concurrent.TimeUnit;
@@ -26,9 +29,11 @@ import java.util.logging.LoggingPermission;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -54,7 +59,7 @@ public class OkhttpActivity extends AppCompatActivity {
         @Override
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what) {
-                case 0x11:
+                default:
                     String mes = msg.obj.toString();
                     Log.e("tag", "到了handle");
                     Log.e("tag", mes + "++++++");
@@ -94,7 +99,7 @@ public class OkhttpActivity extends AppCompatActivity {
         MNokHttp.sendJsonRequest(null, "http://www.baidu.com", ResponseClass.class, new IJsonDataListener<ResponseClass>() {
             @Override
             public void onSuccess(ResponseClass m) {
-                Log.e("tag","访问成功"+(m==null));
+                Log.e("tag", "访问成功" + (m == null));
             }
 
         });
@@ -104,21 +109,17 @@ public class OkhttpActivity extends AppCompatActivity {
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
         okHttpClientBuilder.connectTimeout(DEFAULT_KEYS_DIALER, TimeUnit.SECONDS);
 
-        HttpLoggingInterceptor.Level  level= HttpLoggingInterceptor.Level.BODY;
-        HttpLoggingInterceptor httpLoggingInterceptor= new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-            @Override
-            public void log(String message) {
-                Log.e("zbc","OkHttp====Message:"+message);
-            }
-        });
+        HttpLoggingInterceptor.Level level = HttpLoggingInterceptor.Level.BODY;
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(
+                message -> Log.e("zbc", "Retrofit====Message:" + message));
         httpLoggingInterceptor.setLevel(level);
         okHttpClientBuilder.addInterceptor(httpLoggingInterceptor);
 
         OkHttpClient okHttpClient = okHttpClientBuilder.build();
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://api.apiopen.top/")
-                            .client(okHttpClient)
-                            .build();
+                .client(okHttpClient)
+                .build();
         RetrofitService retrofitService = retrofit.create(RetrofitService.class);
 
         retrofit2.Call<ResponseBody> video = retrofitService.getJoke(1, 1, "video");
@@ -148,19 +149,39 @@ public class OkhttpActivity extends AppCompatActivity {
          *
          */
         MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
-        Request request = new Request.Builder().url("http://www.baidu.com").build();
-        OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("page", 1);
+            jsonObject.put("count", 1);
+            jsonObject.put("type", "video");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        HttpLoggingInterceptor.Level level = HttpLoggingInterceptor.Level.BODY;
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(
+                message -> Log.e("zbc", "Retrofit====Message:" + message));
+        httpLoggingInterceptor.setLevel(level);
+        //Log.e("jsonObjectStr==", jsonObject.toString());
+        RequestBody requestBody = new FormBody.Builder().add("page", "1").add("count", "1").add("type", "video").build();
+        Request request = new Request.Builder().url("https://api.apiopen.top/getJoke").post(requestBody).build();
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor)
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(20, TimeUnit.SECONDS)
+                .build();
         Message message = new Message();
+        //Log.e("request==", request.toString());
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.e("tag", "failure");
+                Log.e("onFailure", "failure");
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.e("tag", response.toString());
+                //Log.e("onResponse", response.toString());
                 int code = response.code();
+                String data = response.body().string();
+                //Log.e("onResponse", data);
                 if (code == 200) {
                     message.what = 0x11;
                     message.obj = response.toString();
