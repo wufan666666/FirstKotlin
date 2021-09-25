@@ -13,7 +13,7 @@ import android.widget.Toast;
  */
 public class SQLDao {
 
-    private Context context;
+    private final Context context;
     private final MyDBOpenHelper myDBOpenHelper;
 
     public SQLDao(Context context) {

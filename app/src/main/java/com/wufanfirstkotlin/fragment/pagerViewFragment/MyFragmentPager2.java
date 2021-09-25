@@ -19,7 +19,7 @@ import com.wufanfirstkotlin.R;
  * @date : 2021年04月15日 14:47
  */
 public class MyFragmentPager2 extends Fragment {
-    private String content;
+    private final String content;
     public MyFragmentPager2(String content){
         this.content = content;
     }
@@ -28,7 +28,7 @@ public class MyFragmentPager2 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.item_fragment,container,false);
-        TextView num =(TextView) view.findViewById(R.id.num);
+        TextView num = view.findViewById(R.id.num);
         Log.e("tag","onCreateView");
         num.setText(content);
         return view;

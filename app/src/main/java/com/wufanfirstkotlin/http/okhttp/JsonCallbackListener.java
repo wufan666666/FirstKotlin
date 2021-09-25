@@ -16,10 +16,10 @@ import java.io.InputStreamReader;
  * @date : 2021年04月29日 15:52
  */
 public class JsonCallbackListener<T>  implements CallbackListener{
-    private Class<T> responseClass;
-    private IJsonDataListener iJsonDataListener;
+    private final Class<T> responseClass;
+    private final IJsonDataListener iJsonDataListener;
 
-    private Handler mHandler = new Handler(Looper.getMainLooper());
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
 
     public JsonCallbackListener(Class<T> responseClass,IJsonDataListener iJsonDataListener){
         this.responseClass = responseClass;

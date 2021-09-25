@@ -24,7 +24,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     private ArrayList<String> names = new ArrayList<>();
-    private Context context;
+    private final Context context;
 
     public RecyclerViewAdapter(ArrayList<String> names, Context context) {
         this.names = names;
@@ -49,7 +49,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView textView;
+        private final TextView textView;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);

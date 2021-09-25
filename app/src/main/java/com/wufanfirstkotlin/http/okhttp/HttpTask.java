@@ -3,6 +3,7 @@ package com.wufanfirstkotlin.http.okhttp;
 import com.alibaba.fastjson.JSON;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author : wf
@@ -16,11 +17,7 @@ public class HttpTask<T> implements Runnable{
         this.httpRequest=httpRequest;
         httpRequest.setUrl(url);
         httpRequest.setListener(listener);
-        try {
-            httpRequest.setData(JSON.toJSONString(requestData).getBytes("utf-8"));
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        httpRequest.setData(JSON.toJSONString(requestData).getBytes(StandardCharsets.UTF_8));
     }
 
 

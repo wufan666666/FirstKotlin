@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:textAllCaps="false"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tvOnMainThread"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        />
+
+    <TextView
+        android:id="@+id/tvOnOtherThread"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnHandlerpost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Handlerpost"
+        android:background="@drawable/layar_list1"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:id="@+id/btnHandlerPostdelay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HandlerPostdelay"
+        android:background="@drawable/layar_list2"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnSendMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SendMessage"
+        android:background="@drawable/layar_list3"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnSendtoTarget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SendtoTarget"/>
+
+    <Button
+        android:id="@+id/btnPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post"/>
+
+    <Button
+        android:id="@+id/btnPostDelay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PostDelay"/>
+
+    <Button
+        android:id="@+id/btnSendMessage2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SendMessage2"/>
+
+    <Button
+        android:id="@+id/btnSendToTarget2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SendToTarget2"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/bomb_0"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="didndnd"
+                android:layout_toRightOf="@id/img"
+                android:layout_marginTop="20dp"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

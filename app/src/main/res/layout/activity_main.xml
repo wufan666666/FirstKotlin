@@ -8,80 +8,109 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/web_view_bt"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/webview" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/dialog"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="dialog" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="material_design"
+                android:textAllCaps="false"/>
 
-    <Button
-        android:id="@+id/checkbox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="checkbox"
-        />
-    <Button
-        android:id="@+id/date_picker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="datePicker"
-        />
-    <Button
-        android:id="@+id/broadcast"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="broadcast"
-        />
+            <Button
+                android:id="@+id/web_view_bt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/webview" />
 
-    <Button
-        android:id="@+id/service"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="service" />
+            <Button
+                android:id="@+id/dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="dialog" />
 
-    <Button
-        android:id="@+id/intent_service"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="IntentService" />
-    <Button
-        android:id="@+id/fragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="fragment" />
+            <Button
+                android:id="@+id/checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="checkbox" />
 
-    <Button
-        android:id="@+id/sqLite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sqlite" />
+            <Button
+                android:id="@+id/date_picker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="datePicker" />
 
-    <Button
-        android:id="@+id/http"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="http" />
-    <Button
-        android:id="@+id/custom_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="custom_view" />
+            <Button
+                android:id="@+id/broadcast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="broadcast" />
 
-    <Button
-        android:id="@+id/mvp_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="MVP的登录" />
-    <Button
-        android:id="@+id/recycleView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="RecycleView" />
+            <Button
+                android:id="@+id/service"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="service" />
 
+            <Button
+                android:id="@+id/intent_service"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="IntentService" />
+
+            <Button
+                android:id="@+id/fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="fragment" />
+
+            <Button
+                android:id="@+id/sqLite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sqlite" />
+
+            <Button
+                android:id="@+id/http"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="http" />
+
+            <Button
+                android:id="@+id/custom_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="custom_view" />
+
+            <Button
+                android:id="@+id/mvp_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MVP的登录" />
+
+            <Button
+                android:id="@+id/recycleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RecycleView" />
+
+            <Button
+                android:id="@+id/handler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="handler" />
+
+            <Button
+                android:id="@+id/materialDesign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="materialDesign" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

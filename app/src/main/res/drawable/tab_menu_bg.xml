@@ -3,6 +3,12 @@
     <item android:state_selected="true">
         <shape>
             <solid android:color="#FAF5C9"/>
+            <corners android:radius="15dp"/>
+            <gradient android:startColor="#4CAF50"
+                      android:centerColor="#3DAEA3"
+                      android:endColor="#89C147"
+                android:angle="270"
+                />
         </shape>
     </item>
     <item android:state_selected="false">

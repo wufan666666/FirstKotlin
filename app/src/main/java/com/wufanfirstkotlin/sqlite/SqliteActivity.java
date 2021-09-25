@@ -68,9 +68,9 @@ public class SqliteActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        add = (Button) findViewById(R.id.add);
-        delete = (Button) findViewById(R.id.delete);
-        update = (Button) findViewById(R.id.update);
-        select = (Button) findViewById(R.id.select);
+        add = findViewById(R.id.add);
+        delete = findViewById(R.id.delete);
+        update = findViewById(R.id.update);
+        select = findViewById(R.id.select);
     }
 }

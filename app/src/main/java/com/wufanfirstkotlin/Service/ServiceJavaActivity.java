@@ -9,6 +9,7 @@ import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -28,16 +29,19 @@ public class ServiceJavaActivity extends AppCompatActivity {
     private Button serviceStatus;
     private Button serviceStart;
     private Button serviceClose;
+    private TextView textView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
-        bindService = (Button) findViewById(R.id.bind_service);
-        unbindService = (Button) findViewById(R.id.unbind_service);
-        serviceStatus = (Button) findViewById(R.id.service_status);
-        serviceStart = (Button) findViewById(R.id.service_start);
-        serviceClose = (Button) findViewById(R.id.service_close);
+        textView = findViewById(R.id.text_view);
+        bindService = findViewById(R.id.bind_service);
+        unbindService = findViewById(R.id.unbind_service);
+        serviceStatus = findViewById(R.id.service_status);
+        serviceStart = findViewById(R.id.service_start);
+        serviceClose = findViewById(R.id.service_close);
+        textView.setSelected(true);
         final Intent intent = new Intent(this, VolumeService.class);
 
         bindService.setOnClickListener(new View.OnClickListener() {

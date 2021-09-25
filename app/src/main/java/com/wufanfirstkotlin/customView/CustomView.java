@@ -1,9 +1,11 @@
 package com.wufanfirstkotlin.customView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +22,8 @@ import java.util.List;
  * 系统没有的效果（ImageView,button,TextView等）
  */
 public class CustomView extends ViewGroup {
-    private int mHorizontalSpacing = dp2px(16);
-    private int mVerticalSpacing = dp2px(8);
+    private final int mHorizontalSpacing = dp2px(16);
+    private final int mVerticalSpacing = dp2px(8);
 
 
     /**
@@ -211,6 +213,14 @@ public class CustomView extends ViewGroup {
     private int dp2px(int dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,dp, Resources.getSystem().getDisplayMetrics());
 
+    }
+
+    /**
+     *
+     * @param dps
+     */
+    public void setRetrofit(int dps) {
+        Log.e("retrofit", dps + "");
     }
 
 

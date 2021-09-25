@@ -15,6 +15,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.wufanfirstkotlin.R;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * @author : wf
  * @date : 2021年04月15日 14:43
@@ -41,7 +44,7 @@ public class FragmentActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_fragment);
-        Log.e("tag","onCreate"+"--activity");
+        Log.e("activty","onCreate"+"--activity");
         fgManager = getSupportFragmentManager();
         initView();
         alert.setOnClickListener(this);
@@ -54,33 +57,33 @@ public class FragmentActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e("tag","onStart"+"--activity");
+        Log.e("activty","onStart"+"--activity");
         alert.performClick();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e("tag","onResume"+"--activity");
+        Log.e("activty","onResume"+"--activity");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.e("tag","onStop"+"--activity");
+        Log.e("activty","onStop"+"--activity");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e("tag","onPause"+"--activity");
+        Log.e("activty","onPause"+"--activity");
 
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.e("tag","onDestroy"+"--activity");
+        Log.e("activty","onDestroy"+"--activity");
     }
 
     @Override
@@ -90,15 +93,15 @@ public class FragmentActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initView() {
-        lyTop = (LinearLayout) findViewById(R.id.ly_top);
-        topText = (TextView) findViewById(R.id.top_text);
-        lyContent = (FrameLayout) findViewById(R.id.ly_content);
-        buttonView = (View) findViewById(R.id.button_view);
-        lyButton = (LinearLayout) findViewById(R.id.ly_button);
-        alert = (TextView) findViewById(R.id.alert);
-        message = (TextView) findViewById(R.id.message);
-        information = (TextView) findViewById(R.id.information);
-        setting = (TextView) findViewById(R.id.setting);
+        lyTop = findViewById(R.id.ly_top);
+        topText = findViewById(R.id.top_text);
+        lyContent = findViewById(R.id.ly_content);
+        buttonView = findViewById(R.id.button_view);
+        lyButton = findViewById(R.id.ly_button);
+        alert = findViewById(R.id.alert);
+        message = findViewById(R.id.message);
+        information = findViewById(R.id.information);
+        setting = findViewById(R.id.setting);
     }
 
     //重置所有文本的选中状态
@@ -120,7 +123,7 @@ public class FragmentActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         FragmentTransaction fragmentTransaction = fgManager.beginTransaction();
-        hideAllFragment(fragmentTransaction);
+        hideAllFragment(fragmentTransaction);   
         switch (v.getId()) {
             case R.id.alert:
                 setSelected();

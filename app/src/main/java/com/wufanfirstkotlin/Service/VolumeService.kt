@@ -19,7 +19,7 @@ class VolumeService : Service() {
 
     inner class MyBinder:Binder(){
         fun getCount():Int{
-            return conut++;
+            return conut++
         }
     }
 
@@ -39,7 +39,7 @@ class VolumeService : Service() {
         filter.addAction("sendEmptyBroadCast")
         registerReceiver(myBroadCast, filter)
 
-        Thread(){
+        Thread {
             kotlin.run {
 
                 while (!flag){
@@ -48,7 +48,7 @@ class VolumeService : Service() {
                     }catch (e:InterruptedException){
                         e.printStackTrace()
                     }
-                    conut++;
+                    conut++
                 }
             }
         }.start()

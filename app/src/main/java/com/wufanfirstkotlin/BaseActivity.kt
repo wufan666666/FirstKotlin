@@ -1,10 +1,13 @@
 package com.wufanfirstkotlin
 
-import android.app.Activity
-import android.os.Handler
-import android.os.Message
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import javax.security.auth.callback.Callback
 
-class BaseActivity : Activity(),Callback {
+open class BaseActivity : AppCompatActivity(),Callback {
 
+
+    fun toast(msg:String){
+        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show()
+    }
 }

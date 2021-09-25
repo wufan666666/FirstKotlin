@@ -18,9 +18,14 @@
         android:roundIcon="@mipmap/left"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FirstKotlin"
+        android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".recycleview.RecycleViewActivity"></activity>
+        <activity android:name=".materialdesign.CatDetailActivity" android:theme="@style/CatDetailTheme"></activity>
+        <activity android:name=".materialdesign.FloatingActionButtonActivity" />
+        <activity android:name=".materialdesign.DrawerActivity" />
+        <activity android:name=".materialdesign.ToolbarActivity" />
+        <activity android:name=".materialdesign.MaterialDesignActivity" />
+        <activity android:name=".recycleview.RecycleViewActivity" />
         <activity android:name=".customView.SecondActivity" />
 
         <service
@@ -62,6 +67,7 @@
         <activity android:name=".viewPractice.CheckBoxActivity" />
         <activity android:name=".Service.ServiceJavaActivity" />
         <activity android:name=".viewPractice.DialogActivity" />
+        <activity android:name=".handler.HandlerActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

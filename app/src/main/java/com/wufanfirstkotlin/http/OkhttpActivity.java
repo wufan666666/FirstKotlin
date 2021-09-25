@@ -49,7 +49,7 @@ public class OkhttpActivity extends AppCompatActivity {
 
     public static final class InnerHandler extends Handler {
         private Callback callback;
-        private OkhttpActivity okhttpActivity;
+        private final OkhttpActivity okhttpActivity;
 
         public InnerHandler(OkhttpActivity okhttpActivity) {
             this.callback = new SoftReference<Callback>(callback).get();
@@ -192,9 +192,9 @@ public class OkhttpActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        okhttp = (Button) findViewById(R.id.okhttp);
-        volley = (Button) findViewById(R.id.volley);
-        retrofit = (Button) findViewById(R.id.retrofit);
-        myhttp = (Button) findViewById(R.id.myhttp);
+        okhttp = findViewById(R.id.okhttp);
+        volley = findViewById(R.id.volley);
+        retrofit = findViewById(R.id.retrofit);
+        myhttp = findViewById(R.id.myhttp);
     }
 }

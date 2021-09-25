@@ -83,15 +83,15 @@ public class FragmentPagerActivity extends AppCompatActivity implements View.OnC
     }
 
     private void initView() {
-        lyTop = (LinearLayout) findViewById(R.id.ly_top);
-        topText = (TextView) findViewById(R.id.top_text);
+        lyTop = findViewById(R.id.ly_top);
+        topText = findViewById(R.id.top_text);
         lyContent = findViewById(R.id.ly_content);
-        buttonView = (View) findViewById(R.id.button_view);
-        lyButton = (LinearLayout) findViewById(R.id.ly_button);
-        alert = (TextView) findViewById(R.id.alert);
-        message = (TextView) findViewById(R.id.message);
-        information = (TextView) findViewById(R.id.information);
-        setting = (TextView) findViewById(R.id.setting);
+        buttonView = findViewById(R.id.button_view);
+        lyButton = findViewById(R.id.ly_button);
+        alert = findViewById(R.id.alert);
+        message = findViewById(R.id.message);
+        information = findViewById(R.id.information);
+        setting = findViewById(R.id.setting);
         lyContent.setAdapter(adapter);
         lyContent.setCurrentItem(0);
         lyContent.addOnPageChangeListener(this);

@@ -12,7 +12,7 @@ fun sum1(a: Int, b: Int): Int { //a,b 输入参数 a+b为返回值
 
 fun sum2(a: Int, b: Int) = a + b //由系统自动判断返回值
 
-public fun sum3(a: Int, b: Int) = a + b //public的方法必须申明返回值类型
+fun sum3(a: Int, b: Int) = a + b //public的方法必须申明返回值类型
 
 fun printSum1(a: Int, b: Int): Unit { //Unit类似于java中的void 无返回值
     println(a + b)

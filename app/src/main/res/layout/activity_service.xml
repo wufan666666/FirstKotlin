@@ -5,7 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     tools:context=".Service.ServiceIntentActivity">
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:text="请使用手机扫描二维码，然后连接设备请使用二维码扫描手机，然后连接设备请使用二维码扫描手机，然后连接设备请使用二维码扫描手机，然后连接设备"
+        android:textSize="20sp"
+        android:singleLine="true"
+        android:textColor="#C63E3E"
+        android:focusableInTouchMode="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:focusable="true"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
     <Button
         android:id="@+id/bind_service"
@@ -35,5 +55,5 @@
         android:layout_height="wrap_content"
         android:text="service关闭" />
 
-
+    </LinearLayout>
 </LinearLayout>

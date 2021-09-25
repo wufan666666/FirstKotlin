@@ -24,7 +24,9 @@ import com.wufanfirstkotlin.Service.ServiceJavaActivity
 import com.wufanfirstkotlin.broadcast.BroadCastActivity
 import com.wufanfirstkotlin.customView.CustomActivity
 import com.wufanfirstkotlin.fragment.FragmentActivity
+import com.wufanfirstkotlin.handler.HandlerActivity
 import com.wufanfirstkotlin.http.OkhttpActivity
+import com.wufanfirstkotlin.materialdesign.MaterialDesignActivity
 import com.wufanfirstkotlin.mvp.LoginMVPActivity
 import com.wufanfirstkotlin.recycleview.RecycleViewActivity
 import com.wufanfirstkotlin.sqlite.SqliteActivity
@@ -51,6 +53,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var custom_view: Button
     private lateinit var mvp_login: Button
     private lateinit var recycleView: Button
+    private lateinit var handler: Button
+    private lateinit var materialDesign: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,6 +72,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         custom_view = findViewById(R.id.custom_view)
         mvp_login = findViewById(R.id.mvp_login)
         recycleView = findViewById(R.id.recycleView)
+        handler = findViewById(R.id.handler)
+        materialDesign = findViewById(R.id.materialDesign)
         webviewbt.setOnClickListener(this)
         dialog.setOnClickListener(this)
         checkbox.setOnClickListener(this)
@@ -81,6 +87,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         custom_view.setOnClickListener(this)
         mvp_login.setOnClickListener(this)
         recycleView.setOnClickListener(this)
+        handler.setOnClickListener(this)
+        materialDesign.setOnClickListener(this)
         testPermission(this)
     }
 
@@ -126,7 +134,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     //测试申请存储权限
     private fun testPermission(activity: Activity) {
-        val checkList = arrayOf<String>(
+        val checkList = arrayOf(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.INTERNET,
@@ -231,6 +239,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.mvp_login -> startActivity(Intent(this, LoginMVPActivity::class.java))
 
             R.id.recycleView -> startActivity(Intent(this, RecycleViewActivity::class.java))
+
+            R.id.handler -> startActivity(Intent(this, HandlerActivity::class.java))
+
+            R.id.materialDesign -> startActivity(Intent(this, MaterialDesignActivity::class.java))
 
 
         }

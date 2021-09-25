@@ -22,7 +22,7 @@ import java.util.ArrayList;
  */
 public class RecycleViewActivity extends AppCompatActivity {
 
-    private ArrayList<String> names = new ArrayList<>();
+    private final ArrayList<String> names = new ArrayList<>();
 
     private RecyclerView recyclerView;
 

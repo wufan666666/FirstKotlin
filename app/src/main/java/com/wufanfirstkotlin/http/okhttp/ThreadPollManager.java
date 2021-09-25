@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadPollManager {
 
-    private static ThreadPollManager threadPollManager = new ThreadPollManager();
+    private static final ThreadPollManager threadPollManager = new ThreadPollManager();
 
 
     public static ThreadPollManager getInstance(){
@@ -21,7 +21,7 @@ public class ThreadPollManager {
 
 
 
-    private LinkedBlockingDeque<Runnable> mQueue = new LinkedBlockingDeque<>();
+    private final LinkedBlockingDeque<Runnable> mQueue = new LinkedBlockingDeque<>();
 
     public void addTask(Runnable runnable){
         try {
@@ -32,7 +32,7 @@ public class ThreadPollManager {
     }
 
 
-    private ThreadPoolExecutor threadPoolExecutor;
+    private final ThreadPoolExecutor threadPoolExecutor;
     private ThreadPollManager(){
         threadPoolExecutor = new ThreadPoolExecutor(3, 10, 15, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(4)
                 , new RejectedExecutionHandler() {

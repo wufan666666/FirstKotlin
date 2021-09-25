@@ -104,12 +104,11 @@ public class FlowLayout extends ViewGroup {
                 countWidth = iChildWidth;
                 countHeight = iChildHeight;
                 viewList.clear();
-                viewList.add(childAt);
             } else {//不需要换行
                 countWidth = countWidth + iChildWidth;
                 countHeight = Math.max(countHeight, iChildHeight);
-                viewList.add(childAt);
             }
+            viewList.add(childAt);
 
             //针对最后一行
             if (x == childCount - 1) {

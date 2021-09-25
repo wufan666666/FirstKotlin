@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * @date : 2021年04月15日 14:47
  */
 public class MyFragmentPager1 extends Fragment {
-    private String content;
+    private final String content;
     public MyFragmentPager1(String content){
         this.content = content;
     }
@@ -32,8 +32,8 @@ public class MyFragmentPager1 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.item_fragment,container,false);
-        TextView num =(TextView) view.findViewById(R.id.num);
-        ImageView image =(ImageView) view.findViewById(R.id.image);
+        TextView num = view.findViewById(R.id.num);
+        ImageView image = view.findViewById(R.id.image);
         Log.e("tag","onCreateView");
         ArrayList<ItemBean> list = new ArrayList();
         for (int i = 0;i<40;i++){
