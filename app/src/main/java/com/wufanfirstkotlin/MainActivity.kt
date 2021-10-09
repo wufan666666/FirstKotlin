@@ -25,6 +25,7 @@ import com.wufanfirstkotlin.broadcast.BroadCastActivity
 import com.wufanfirstkotlin.customView.CustomActivity
 import com.wufanfirstkotlin.fragment.FragmentActivity
 import com.wufanfirstkotlin.handler.HandlerActivity
+import com.wufanfirstkotlin.himalaya.HimalayaActivity
 import com.wufanfirstkotlin.http.OkhttpActivity
 import com.wufanfirstkotlin.materialdesign.MaterialDesignActivity
 import com.wufanfirstkotlin.mvp.LoginMVPActivity
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var recycleView: Button
     private lateinit var handler: Button
     private lateinit var materialDesign: Button
+    private lateinit var himalaya: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,6 +76,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         recycleView = findViewById(R.id.recycleView)
         handler = findViewById(R.id.handler)
         materialDesign = findViewById(R.id.materialDesign)
+        himalaya = findViewById(R.id.himalaya)
         webviewbt.setOnClickListener(this)
         dialog.setOnClickListener(this)
         checkbox.setOnClickListener(this)
@@ -89,6 +92,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         recycleView.setOnClickListener(this)
         handler.setOnClickListener(this)
         materialDesign.setOnClickListener(this)
+        himalaya.setOnClickListener(this)
         testPermission(this)
     }
 
@@ -154,13 +158,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 
-   /* private fun testShareMedia() {
-        //获取目录：/storage/emulated/0/
-        val rootFile: File = Environment.getExternalStorageDirectory()
-        val imagePath: String =
-            rootFile.getAbsolutePath() + File.separator + Environment.DIRECTORY_PICTURES + File.separator.toString() + "myPic.png"
-        val bitmap = BitmapFactory.decodeFile(imagePath)
-    }*/
+    /* private fun testShareMedia() {
+         //获取目录：/storage/emulated/0/
+         val rootFile: File = Environment.getExternalStorageDirectory()
+         val imagePath: String =
+             rootFile.getAbsolutePath() + File.separator + Environment.DIRECTORY_PICTURES + File.separator.toString() + "myPic.png"
+         val bitmap = BitmapFactory.decodeFile(imagePath)
+     }*/
 
 
     /*private fun getImagePath(context: Context) {
@@ -243,6 +247,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.handler -> startActivity(Intent(this, HandlerActivity::class.java))
 
             R.id.materialDesign -> startActivity(Intent(this, MaterialDesignActivity::class.java))
+
+            R.id.himalaya -> startActivity(Intent(this, HimalayaActivity::class.java))
 
 
         }

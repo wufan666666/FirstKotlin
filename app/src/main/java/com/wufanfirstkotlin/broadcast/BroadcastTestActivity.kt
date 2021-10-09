@@ -11,21 +11,21 @@ import com.wufanfirstkotlin.R
 
 class BroadcastTestActivity : AppCompatActivity() {
 
-    /*1. Standard模式（默认）
+    /*1. Standard模式（默认）
     我们平时直接创建的Activity都是这种模式的Activity，这种模式的Activity的特点是：
     只要你创建了Activity实例，一旦激活该Activity，则会向任务栈中加入新创建的实例，退出Activity则会在任务栈中销毁该实例。
 
-    2. SingleTop模式
+    2. SingleTop模式
 
     这种模式会考虑当前要激活的Activity实例在任务栈中是否正处于栈顶，
     如果处于栈顶则无需重新创建新的实例，会重用已存在的实例，否则会在任务栈中创建新的实例。
 
-    3. SingleTask模式
+    3. SingleTask模式
 
     如果任务栈中存在该模式的Activity实例，则把栈中该实例以上的Activity实例全部移除，
     调用该实例的newInstance()方法重用该Activity，使该实例处於栈顶位置，否则就重新创建一个新的Activity实例。
 
-    4. SingleInstance模式
+    4. SingleInstance模式
 
     当该模式Activity实例在任务栈中创建后，只要该实例还在任务栈中，即只要激活的是该类型的Activity，
     都会通过调用实例的newInstance()方法重用该Activity，

@@ -1,6 +1,7 @@
 package com.wufanfirstkotlin.materialdesign;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -15,6 +16,8 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.wufanfirstkotlin.R;
+
+import java.lang.reflect.Field;
 
 
 /**

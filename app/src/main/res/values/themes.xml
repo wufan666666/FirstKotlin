@@ -15,6 +15,6 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="CatDetailTheme" parent="AppTheme">
-        <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 </resources>

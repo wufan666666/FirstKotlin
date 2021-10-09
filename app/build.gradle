@@ -34,10 +34,15 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    sourceSets{
+        main{
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {
-
+    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -46,17 +51,20 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation files('libs\\XmlyOAuth2SDK_V2.0.jar')
+    implementation files('libs\\XmDownload_2.0.jar')
     testImplementation 'junit:junit:4.12'
-    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.9'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
     implementation 'com.alibaba:fastjson:1.1.54.android'
-
+    implementation 'com.squareup.okio:okio:1.15.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     implementation 'com.tencent:mmkv:1.0.18'
     //圆形imageview
     implementation 'de.hdodenhof:circleimageview:2.1.0'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'com.google.code.gson:gson:2.8.1'
 
 }
