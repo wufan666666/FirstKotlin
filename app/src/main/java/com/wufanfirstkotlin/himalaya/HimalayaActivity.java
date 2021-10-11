@@ -35,6 +35,7 @@ public class HimalayaActivity extends AppCompatActivity {
         IndicatorAdapter indicatorAdapter = new IndicatorAdapter(this);
         CommonNavigator commonNavigator = new CommonNavigator(this);
         commonNavigator.setAdapter(indicatorAdapter);
+        commonNavigator.setAdjustMode(true);
 
         indicatorAdapter.setOnIndicatorListener(new IndicatorAdapter.OnIndicatorListener() {
             @Override

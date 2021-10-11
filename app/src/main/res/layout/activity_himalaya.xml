@@ -5,16 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".himalaya.HimalayaActivity">
-<net.lucode.hackware.magicindicator.MagicIndicator
-    android:id="@+id/main_indicator"
-    android:layout_width="match_parent"
-    android:layout_height="40dp"/>
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <net.lucode.hackware.magicindicator.MagicIndicator
+            android:id="@+id/main_indicator"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="3" />
+
+        <LinearLayout
+            android:id="@+id/lin_image"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="?attr/colorPrimary">
+
+            <ImageView
+                android:id="@+id/find_image"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/find" />
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/content_viewpager"
-        android:layout_below="@+id/main_indicator"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:overScrollMode="never"/>
+        android:layout_below="@+id/ll"
+        android:overScrollMode="never" />
 
 </RelativeLayout>
