@@ -1,46 +1,57 @@
 package com.wufanfirstkotlin.himalaya;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.wufanfirstkotlin.R;
-import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
-import com.ximalaya.ting.android.opensdk.datatrasfer.IDataCallBack;
-import com.ximalaya.ting.android.opensdk.model.category.Category;
-import com.ximalaya.ting.android.opensdk.model.category.CategoryList;
+import com.wufanfirstkotlin.himalaya.adapters.IndicatorAdapter;
+import com.wufanfirstkotlin.himalaya.adapters.MainContentAdapter;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import net.lucode.hackware.magicindicator.MagicIndicator;
+import net.lucode.hackware.magicindicator.ViewPagerHelper;
+import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator;
 
 public class HimalayaActivity extends AppCompatActivity {
     private String TAG = "HimalayaActivity";
+    private MagicIndicator magicIndicator;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_himalaya);
-        Map<String, String> map = new HashMap<String, String>();
-        CommonRequest.getCategories(map, new IDataCallBack<CategoryList>() {
+       initView();
+
+    }
+
+    private void initView() {
+        magicIndicator = findViewById(R.id.main_indicator);
+        magicIndicator.setBackgroundColor(ContextCompat.getColor(this,R.color.himalaya_color));
+        //创建适配器
+        IndicatorAdapter indicatorAdapter = new IndicatorAdapter(this);
+        CommonNavigator commonNavigator = new CommonNavigator(this);
+        commonNavigator.setAdapter(indicatorAdapter);
+
+        indicatorAdapter.setOnIndicatorListener(new IndicatorAdapter.OnIndicatorListener() {
             @Override
-            public void onSuccess(@Nullable @org.jetbrains.annotations.Nullable CategoryList categoryList) {
-                List<Category> categories = categoryList.getCategories();
-                if (categories!=null){
-                    int size = categories.size();
-                    Log.i(TAG,"categories size=====>"+size);
-                    for (Category category : categories) {
-                        Log.d(TAG,"category =====>" +category.getCategoryName());
-                    }
+            public void onTapClick(int position) {
+                if (viewPager!=null){
+                    viewPager.setCurrentItem(position);
                 }
             }
-
-            @Override
-            public void onError(int i, String s) {
-                Log.e(TAG,"error  message=====>" +s);
-            }
         });
+
+        viewPager = findViewById(R.id.content_viewpager);
+
+        FragmentManager supportFragmentManager = getSupportFragmentManager();
+        MainContentAdapter contentAdapter = new MainContentAdapter(supportFragmentManager);
+        viewPager.setAdapter(contentAdapter);
+        //将viewpager和indicator绑定在一起
+        magicIndicator.setNavigator(commonNavigator);
+        ViewPagerHelper.bind(magicIndicator,viewPager);
     }
 }
