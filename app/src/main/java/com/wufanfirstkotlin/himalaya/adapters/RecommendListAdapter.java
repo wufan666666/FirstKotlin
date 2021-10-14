@@ -81,7 +81,7 @@ public class RecommendListAdapter extends RecyclerView.Adapter<RecommendListAdap
             albumContentSize = itemView.findViewById(R.id.album_content_size);
             albumTitleTv.setText(album.getAlbumTitle());
             albumDescription.setText(album.getAlbumIntro());
-            albumPlayCount.setText(album.getPlayCount()%10000+"万");
+            albumPlayCount.setText(album.getPlayCount()/10000+"万");
             albumContentSize.setText(album.getIncludeTrackCount()+"");
             Glide.with(itemView.getContext()).load(album.getCoverUrlLarge()).into(albumCover);
         }

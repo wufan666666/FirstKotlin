@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.wufanfirstkotlin.R;
 import com.wufanfirstkotlin.himalaya.adapters.RecommendListAdapter;
 import com.wufanfirstkotlin.himalaya.base.BaseFragment;
+import com.wufanfirstkotlin.himalaya.interfaces.IRecommendViewCallback;
+import com.wufanfirstkotlin.himalaya.presenters.RecommendPresenter;
 import com.wufanfirstkotlin.himalaya.utils.Constants;
 import com.wufanfirstkotlin.himalaya.utils.L;
 import com.ximalaya.ting.android.opensdk.constants.DTransferConstants;
@@ -28,9 +30,10 @@ import java.util.Map;
  * @author : wf
  * @date : 2021年10月09日 15:31
  */
-public class ReCommonFragment extends BaseFragment {
+public class ReCommonFragment extends BaseFragment implements IRecommendViewCallback {
     private String TAG = "ReCommonFragment";
     private RecommendListAdapter adapter;
+    private RecommendPresenter recommendPresenter;
 
     @Override
     protected View onSubViewLoaded(LayoutInflater layoutInflater, ViewGroup container) {
@@ -42,36 +45,39 @@ public class ReCommonFragment extends BaseFragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new RecommendListAdapter();
         recyclerView.setAdapter(adapter);
-        getRecommendData();
+        //获取到逻辑层的对象
+        recommendPresenter = RecommendPresenter.getInstance();
+        //注册callback回调
+        recommendPresenter.registerViewCallback(this);
+        recommendPresenter.getRecommendList();
         return inflate;
     }
 
-    /**
-     * 获取推荐内容
-     */
-    private void getRecommendData() {
-        L.d(TAG,"进去了喜马拉雅接口调用");
-        Map<String, String> map = new HashMap<>();
-        //表示一页显示多少条
-        map.put(DTransferConstants.LIKE_COUNT, Constants.RECOMMEND_COUNT+"");
-        CommonRequest.getGuessLikeAlbum(map, new IDataCallBack<GussLikeAlbumList>() {
-            @Override
-            public void onSuccess(GussLikeAlbumList gussLikeAlbumList) {
-                if (gussLikeAlbumList!=null){
-                    List<Album> albumList = gussLikeAlbumList.getAlbumList();
-                    updateRecommendUI(albumList);
-                }
-            }
 
-            @Override
-            public void onError(int i, String s) {
-                L.e(TAG,"error====>"+i);
-                L.e(TAG,"error====>"+s);
-            }
-        });
+
+
+
+    @Override
+    public void getRecommendList(List<Album> result) {
+        adapter.setData(result);
     }
 
-    private void updateRecommendUI(List<Album> albumList) {
-        adapter.setData(albumList);
+    @Override
+    public void pullLoadMore(List<Album> result) {
+
+    }
+
+    @Override
+    public void refreshList(List<Album> result) {
+
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        //取消接口的注册，避免内存泄露
+        if (recommendPresenter != null) {
+            recommendPresenter.unregisterViewCallback(this);
+        }
     }
 }
