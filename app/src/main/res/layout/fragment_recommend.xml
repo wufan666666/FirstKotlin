@@ -4,9 +4,23 @@
     android:layout_height="match_parent"
     android:background="#F1EEEE">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycle_view"
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:overScrollMode="never"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content">
+        <com.scwang.smart.refresh.header.ClassicsHeader
+            android:id="@+id/refresh_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never" />
+        <com.scwang.smart.refresh.footer.ClassicsFooter
+            android:id="@+id/refresh_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 </RelativeLayout>

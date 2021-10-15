@@ -2,15 +2,25 @@ package com.wufanfirstkotlin
 
 import android.app.Application
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import com.wufanfirstkotlin.sqlite.MyDBOpenHelper
 import com.ximalaya.ting.android.opensdk.constants.DTransferConstants
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest
 import com.ximalaya.ting.android.opensdk.datatrasfer.DeviceInfoProviderDefault
 import com.ximalaya.ting.android.opensdk.datatrasfer.IDeviceInfoProvider
 
-class MyApplication : Application() {
+open class MyApplication : Application() {
     lateinit var myDBHelper: MyDBOpenHelper
     lateinit var mXimalaya: CommonRequest
+    companion object {
+        var handler: Handler? = null
+        fun getMyHandler(): Handler? {
+            return handler
+        }
+    }
+
+
     var oaid: String = ""
 
     override fun onCreate() {
@@ -27,7 +37,11 @@ class MyApplication : Application() {
             mXimalaya.setPackid("com.ximalaya.qunfeng")
             mXimalaya.init(this, mAppSecret, getDeviceInfoProvider(this))
         }
+        handler = Handler(Looper.myLooper()!!);
     }
+
+
+
     private fun getDeviceInfoProvider(context: Context?): IDeviceInfoProvider? {
         return object : DeviceInfoProviderDefault(context) {
             override fun oaid(): String {

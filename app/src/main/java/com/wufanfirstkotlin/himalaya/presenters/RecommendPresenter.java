@@ -24,6 +24,8 @@ public class RecommendPresenter implements IRecommendPresenter {
     private static RecommendPresenter recommendPresenter = null;
     private String TAG = "RecommendPresenter";
     private List<IRecommendViewCallback> mCallBack = new ArrayList<>();
+    private List<Album> albumArrayList = new ArrayList<>();
+    private boolean isDropDown;
 
     private RecommendPresenter() {
     }
@@ -46,24 +48,26 @@ public class RecommendPresenter implements IRecommendPresenter {
 
     @Override
     public void pullLoadMore() {
-
+        isDropDown = true;
+        getRecommendData();
     }
 
     @Override
     public void refreshList() {
-
+        getRecommendData();
     }
+
 
     @Override
     public void registerViewCallback(IRecommendViewCallback callback) {
-        if (!mCallBack.contains(callback)){
+        if (mCallBack != null && !mCallBack.contains(callback)) {
             mCallBack.add(callback);
         }
     }
 
     @Override
     public void unregisterViewCallback(IRecommendViewCallback callback) {
-        if (!mCallBack.contains(callback)){
+        if (mCallBack != null && !mCallBack.contains(callback)) {
             mCallBack.remove(callback);
         }
     }
@@ -73,29 +77,60 @@ public class RecommendPresenter implements IRecommendPresenter {
      */
     private void getRecommendData() {
         Map<String, String> map = new HashMap<>();
+        onLoading();
         //表示一页显示多少条
-        map.put(DTransferConstants.LIKE_COUNT, Constants.RECOMMEND_COUNT+"");
+        map.put(DTransferConstants.LIKE_COUNT, Constants.RECOMMEND_COUNT + "");
         CommonRequest.getGuessLikeAlbum(map, new IDataCallBack<GussLikeAlbumList>() {
             @Override
             public void onSuccess(GussLikeAlbumList gussLikeAlbumList) {
-                if (gussLikeAlbumList!=null){
+                if (gussLikeAlbumList != null) {
                     List<Album> albumList = gussLikeAlbumList.getAlbumList();
-                    updateRecommendUI(albumList);
+                    if (isDropDown) {
+                        albumArrayList.addAll(albumList);
+                        isDropDown = false;
+                        updateRecommendUI(albumArrayList);
+                    } else {
+                        updateRecommendUI(albumList);
+                    }
                 }
             }
 
             @Override
             public void onError(int i, String s) {
-                L.e(TAG,"error====>"+i);
-                L.e(TAG,"error====>"+s);
+                L.e(TAG, "error====>" + i);
+                L.e(TAG, "error====>" + s);
+                handleError();
             }
         });
     }
 
-    private void updateRecommendUI(List<Album> albumList) {
+    private void handleError() {
         if (mCallBack != null) {
             for (IRecommendViewCallback iRecommendViewCallback : mCallBack) {
-                iRecommendViewCallback.getRecommendList(albumList);
+                iRecommendViewCallback.networkError();
+            }
+        }
+    }
+
+    void onLoading() {
+        if (mCallBack != null) {
+            for (IRecommendViewCallback iRecommendViewCallback : mCallBack) {
+                iRecommendViewCallback.onLoading();
+            }
+        }
+    }
+
+    private void updateRecommendUI(List<Album> albumList) {
+        if (mCallBack != null) {
+            if (albumList.size() == 0) {
+                for (IRecommendViewCallback iRecommendViewCallback : mCallBack) {
+                    iRecommendViewCallback.onEmpty();
+                }
+            } else {
+
+                for (IRecommendViewCallback iRecommendViewCallback : mCallBack) {
+                    iRecommendViewCallback.getRecommendList(albumList);
+                }
             }
         }
     }
