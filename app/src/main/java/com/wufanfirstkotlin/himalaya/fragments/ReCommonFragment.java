@@ -1,46 +1,37 @@
 package com.wufanfirstkotlin.himalaya.fragments;
 
-import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.scwang.smart.refresh.footer.ClassicsFooter;
-import com.scwang.smart.refresh.header.ClassicsHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 import com.wufanfirstkotlin.R;
+import com.wufanfirstkotlin.himalaya.DetailActivity;
 import com.wufanfirstkotlin.himalaya.adapters.RecommendListAdapter;
 import com.wufanfirstkotlin.himalaya.base.BaseFragment;
 import com.wufanfirstkotlin.himalaya.interfaces.IRecommendViewCallback;
+import com.wufanfirstkotlin.himalaya.presenters.AlbumDetailPresenter;
 import com.wufanfirstkotlin.himalaya.presenters.RecommendPresenter;
-import com.wufanfirstkotlin.himalaya.utils.Constants;
-import com.wufanfirstkotlin.himalaya.utils.L;
 import com.wufanfirstkotlin.himalaya.views.UILoader;
-import com.ximalaya.ting.android.opensdk.constants.DTransferConstants;
-import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
-import com.ximalaya.ting.android.opensdk.datatrasfer.IDataCallBack;
 import com.ximalaya.ting.android.opensdk.model.album.Album;
-import com.ximalaya.ting.android.opensdk.model.album.GussLikeAlbumList;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author : wf
  * @date : 2021年10月09日 15:31
  */
-public class ReCommonFragment extends BaseFragment implements IRecommendViewCallback, UILoader.OnRetryClickListener, OnRefreshListener, OnLoadMoreListener {
+public class ReCommonFragment extends BaseFragment implements IRecommendViewCallback, UILoader.OnRetryClickListener, OnRefreshListener, OnLoadMoreListener, RecommendListAdapter.OnItemClickListener {
     private String TAG = "ReCommonFragment";
     private RecommendListAdapter adapter;
     private RecommendPresenter recommendPresenter;
@@ -78,6 +69,7 @@ public class ReCommonFragment extends BaseFragment implements IRecommendViewCall
 
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new RecommendListAdapter();
+        adapter.setOnItemClickListener(this);
         recyclerView.setAdapter(adapter);
         return inflate;
     }
@@ -130,5 +122,13 @@ public class ReCommonFragment extends BaseFragment implements IRecommendViewCall
     public void onLoadMore(@NonNull @NotNull RefreshLayout refreshLayout) {
         refreshLayout.finishLoadMore(100);
         recommendPresenter.pullLoadMore();
+    }
+
+    @Override
+    public void ItemClick(int position, Album album) {
+
+        AlbumDetailPresenter.getInstance().setTargetAlbum(album);
+        Intent intent = new Intent(this.getContext(), DetailActivity.class);
+        startActivity(intent);
     }
 }

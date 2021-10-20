@@ -1,9 +1,5 @@
 package com.wufanfirstkotlin.himalaya.adapters;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.graphics.drawable.RoundedBitmapDrawable;
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -31,12 +25,14 @@ import java.util.List;
 public class RecommendListAdapter extends RecyclerView.Adapter<RecommendListAdapter.InnerHolder> {
 
     private List<Album> albumList = new ArrayList<>();
+    private OnItemClickListener listener =null;
+
     @NonNull
     @NotNull
     @Override
     public InnerHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recommend,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recommend, parent, false);
         return new InnerHolder(view);
     }
 
@@ -44,21 +40,32 @@ public class RecommendListAdapter extends RecyclerView.Adapter<RecommendListAdap
     public void onBindViewHolder(@NonNull @NotNull InnerHolder holder, int position) {
 
         holder.itemView.setTag(position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    Integer tag = (Integer) v.getTag();
+                    listener.ItemClick(tag,albumList.get(tag));
+                }
+            }
+        });
         holder.setData(albumList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        if (albumList!=null) {
+        if (albumList != null) {
             return albumList.size();
-        }else {
+        } else {
             return 0;
         }
     }
 
     public void setData(List<Album> albumList) {
-        this.albumList = albumList;
-        notifyDataSetChanged();
+        if (albumList != null) {
+            this.albumList = albumList;
+            notifyDataSetChanged();
+        }
     }
 
     public class InnerHolder extends RecyclerView.ViewHolder {
@@ -81,9 +88,16 @@ public class RecommendListAdapter extends RecyclerView.Adapter<RecommendListAdap
             albumContentSize = itemView.findViewById(R.id.album_content_size);
             albumTitleTv.setText(album.getAlbumTitle());
             albumDescription.setText(album.getAlbumIntro());
-            albumPlayCount.setText(album.getPlayCount()/10000+"万");
-            albumContentSize.setText(album.getIncludeTrackCount()+"");
+            albumPlayCount.setText(album.getPlayCount() / 10000 + "万");
+            albumContentSize.setText(album.getIncludeTrackCount() + "集");
             Glide.with(itemView.getContext()).load(album.getCoverUrlLarge()).into(albumCover);
         }
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener=listener;
+    }
+    public interface OnItemClickListener{
+        void ItemClick(int position, Album album);
     }
 }

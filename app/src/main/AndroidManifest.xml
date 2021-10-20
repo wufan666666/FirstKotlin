@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wufanfirstkotlin">
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!--连接网络-->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!--用于管理监听网络状态的变化-->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--用于管理监听网络状态的变化-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--用于管理监听网络状态的变化-->
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <!--获取电话的状态,在打电话的时候暂停播放-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!--target >=28 需要设置此权限 -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 连接网络 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 用于管理监听网络状态的变化 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 用于管理监听网络状态的变化 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 用于管理监听网络状态的变化 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 获取电话的状态,在打电话的时候暂停播放 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- target >=28 需要设置此权限 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/blue_left"
+        android:icon="@mipmap/iconfont"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/left"
+        android:roundIcon="@mipmap/iconfont"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".himalaya.HimalayaActivity"></activity>
+        <activity android:name=".himalaya.DetailActivity"></activity>
+        <activity android:name=".himalaya.HimalayaActivity" />
         <activity
             android:name=".materialdesign.CatDetailActivity"
             android:theme="@style/CatDetailTheme" />

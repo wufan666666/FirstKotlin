@@ -7,4 +7,6 @@ package com.wufanfirstkotlin.himalaya.utils;
 public class Constants {
 
     public static int RECOMMEND_COUNT = 10;
+
+    public static int COUNT_PAGE = 50;
 }

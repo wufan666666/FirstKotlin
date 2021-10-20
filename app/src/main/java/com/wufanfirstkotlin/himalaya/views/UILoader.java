@@ -130,8 +130,8 @@ public abstract class UILoader extends FrameLayout {
 
     private View getLoadingView() {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_onloading, this, false);
-        ImageView imageView = view.findViewById(R.id.loading_image_view);
-        Glide.with(this).load(R.drawable.loading).into(imageView);
+        //ImageView imageView = view.findViewById(R.id.loading_image_view);
+        //Glide.with(this).load(R.drawable.loading).into(imageView);
         return view;
     }
 
