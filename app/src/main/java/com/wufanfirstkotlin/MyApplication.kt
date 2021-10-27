@@ -9,19 +9,25 @@ import com.ximalaya.ting.android.opensdk.constants.DTransferConstants
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest
 import com.ximalaya.ting.android.opensdk.datatrasfer.DeviceInfoProviderDefault
 import com.ximalaya.ting.android.opensdk.datatrasfer.IDeviceInfoProvider
+import com.ximalaya.ting.android.opensdk.player.XmPlayerManager
 
 open class MyApplication : Application() {
     lateinit var myDBHelper: MyDBOpenHelper
     lateinit var mXimalaya: CommonRequest
     companion object {
         var handler: Handler? = null
+        var sContext: Context? = null
         fun getMyHandler(): Handler? {
             return handler
+        }
+        fun getAppContext(): Context? {
+            return sContext
         }
     }
 
 
     var oaid: String = ""
+
 
     override fun onCreate() {
         super.onCreate()
@@ -38,6 +44,9 @@ open class MyApplication : Application() {
             mXimalaya.init(this, mAppSecret, getDeviceInfoProvider(this))
         }
         handler = Handler(Looper.myLooper()!!);
+        //初始化喜马拉雅播放器
+        XmPlayerManager.getInstance(this).init()
+        sContext = baseContext
     }
 
 

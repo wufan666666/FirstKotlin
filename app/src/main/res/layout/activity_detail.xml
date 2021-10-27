@@ -1,76 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:material="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#515153">
+    android:background="#F3F3F4"
+    android:fitsSystemWindows="true">
 
     <ImageView
         android:id="@+id/cover_bg"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:scaleType="fitXY" />
+        android:fitsSystemWindows="true"
+        android:scaleType="centerCrop"
+        material:layout_collapseMode="parallax" />
+
     <RelativeLayout
         android:id="@+id/subscription_container"
-        android:layout_below="@+id/cover_bg"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
-        >
+        android:layout_below="@+id/cover_bg"
+        android:background="@color/white">
+
         <TextView
             android:id="@+id/subscribe_button"
             android:layout_width="75dp"
             android:layout_height="30dp"
-            android:text="+ 订阅"
-            android:gravity="center"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_marginRight="30dp"
-            android:textSize="14sp"
+            android:background="@drawable/circle_button"
+            android:gravity="center"
+            android:text="+ 订阅"
             android:textColor="@color/white"
-            android:background="@drawable/circle_button"/>
+            android:textSize="14sp" />
 
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/play_container"
-        android:layout_below="@+id/subscription_container"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_below="@+id/subscription_container"
         android:background="#EBEBEB">
+
         <ImageView
             android:id="@+id/play_image"
             android:layout_width="19dp"
             android:layout_height="19dp"
-            android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
-            android:src="@mipmap/play_icon"
-            />
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/play_icon" />
+
         <TextView
             android:id="@+id/play_tv"
-            android:layout_toRightOf="@+id/play_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:layout_marginLeft="5dp"
             android:layout_centerVertical="true"
-            android:text="继续播放"/>
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/play_image"
+            android:text="继续播放"
+            android:textSize="12sp" />
+
         <TextView
             android:id="@+id/select_count_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="选集"
-            android:layout_toLeftOf="@+id/select_count_image"
             android:layout_centerVertical="true"
-            />
+            android:layout_toLeftOf="@+id/select_count_image"
+            android:text="选集" />
+
         <ImageView
             android:id="@+id/select_count_image"
             android:layout_width="10dp"
             android:layout_height="10dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
             android:layout_marginLeft="5dp"
-            android:src="@mipmap/arrow_icon"/>
-
+            android:layout_marginRight="20dp"
+            android:src="@mipmap/arrow_icon" />
 
 
     </RelativeLayout>
@@ -97,8 +104,8 @@
             android:id="@+id/tv_album_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="这是标题"
             android:lines="1"
+            android:text="这是标题"
             android:textColor="@color/white"
             android:textSize="18sp" />
 
@@ -111,11 +118,14 @@
             android:textColor="@color/black"
             android:textSize="12sp" />
     </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/play_recycle_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/play_container"/>
+
+
+    <FrameLayout
+        android:id="@+id/framelayout_recycle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/play_container"/>
+
 
 
 </RelativeLayout>

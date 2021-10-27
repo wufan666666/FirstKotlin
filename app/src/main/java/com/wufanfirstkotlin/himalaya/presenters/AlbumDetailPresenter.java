@@ -57,6 +57,7 @@ public class AlbumDetailPresenter implements IAlbumDetailPresenter {
     @Override
     public void getAlbumDetail(int albumId, int page) {
         Map<String, String> map = new HashMap<String, String>();
+        onLoadingResult();
         map.put(DTransferConstants.ALBUM_ID, albumId + "");
         map.put(DTransferConstants.SORT, "asc");
         map.put(DTransferConstants.PAGE, page + "");
@@ -66,15 +67,45 @@ public class AlbumDetailPresenter implements IAlbumDetailPresenter {
             public void onSuccess(TrackList trackList) {
                 if (trackList != null) {
                     List<Track> tracks = trackList.getTracks();
-                    L.d(TAG,"tracks size===>"+tracks.size()+"");
+                    L.d(TAG, "tracks size===>" + tracks.size() + "");
+
+                    if (tracks == null || tracks.size() == 0) {
+                        onEmptyResult();
+                    } else {
+                        handleAlbumResult(tracks);
+                    }
                 }
             }
 
             @Override
             public void onError(int i, String s) {
-
+                onErrorResult(i,s);
             }
         });
+    }
+
+    private void onEmptyResult() {
+        for (IAlbumDetailViewCallback callback : callbacks) {
+            callback.onEmpty();
+        }
+    }
+
+    private void onLoadingResult() {
+        for (IAlbumDetailViewCallback callback : callbacks) {
+            callback.onLoading();
+        }
+    }
+
+    private void onErrorResult(int errorCode, String errorMsg) {
+        for (IAlbumDetailViewCallback callback : callbacks) {
+            callback.networkError(errorCode,errorMsg);
+        }
+    }
+
+    private void handleAlbumResult(List<Track> tracks) {
+        for (IAlbumDetailViewCallback callback : callbacks) {
+            callback.onDetailListLoad(tracks);
+        }
     }
 
     @Override

@@ -1,10 +1,12 @@
 package com.wufanfirstkotlin.himalaya.interfaces;
 
+import com.wufanfirstkotlin.himalaya.base.IBasePresenter;
+
 /**
  * @author : wf
  * @date : 2021年10月11日 15:01
  */
-public interface IRecommendPresenter {
+public interface IRecommendPresenter extends IBasePresenter<IRecommendViewCallback> {
     /**
      * 获取推荐内容
      */
@@ -20,17 +22,6 @@ public interface IRecommendPresenter {
      */
     void refreshList();
 
-    /**
-     * 注册
-     * @param callback
-     */
-    void registerViewCallback(IRecommendViewCallback callback);
-
-    /**
-     * 关闭
-     * @param callback
-     */
-    void unregisterViewCallback(IRecommendViewCallback callback);
 
 
 }

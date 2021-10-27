@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,6 +47,8 @@ public class CatDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cat_detail);
 
         initView();
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.INVISIBLE);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -58,7 +61,6 @@ public class CatDetailActivity extends AppCompatActivity {
         Glide.with(this).load(catImage).into(catImageView);
 
         catTextView.setText("俄罗斯蓝猫（Russian Blue），历史上曾被称做阿契安吉蓝猫，曾有过三种不同的名字。最初是阿契安吉蓝猫，直到20世纪40年代才有现在的名字，另外有段时间它则叫做马耳他猫。证据显示，这种猫确实原产于俄罗斯，因为已在俄罗斯寒带地区发现了同种的猫。俄罗斯蓝猫体型细长，大而直立的尖耳朵，脚掌小而圆，走路像是用脚尖在走。身上披着银蓝色光泽的短被毛，配上修长苗条的体型和轻盈的步态，尽显一派猫中的贵族风度。");
-        getWindow().setStatusBarColor(Color.parseColor("#00000000"));
 
     }
 

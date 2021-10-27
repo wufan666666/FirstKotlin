@@ -21,4 +21,20 @@ public interface IAlbumDetailViewCallback {
      * @param album
      */
     void onAlbumLoaded(Album album);
+    /**
+     * 网络错误
+     * @param errorCode
+     * @param errorMsg
+     */
+    void networkError(int errorCode, String errorMsg);
+
+    /**
+     * 数据为空
+     */
+    void onEmpty();
+
+    /**
+     * 正在加载
+     */
+    void onLoading();
 }

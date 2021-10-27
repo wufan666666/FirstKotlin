@@ -1,6 +1,7 @@
 package com.wufanfirstkotlin.himalaya.base;
 
-import com.wufanfirstkotlin.fragment.FragmentActivity;
+
+import androidx.fragment.app.FragmentActivity;
 
 /**
  * @author : wf

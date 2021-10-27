@@ -18,6 +18,6 @@
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="主人别急，马上来啦！"/>
+            android:text="主人别急，小的正在快马加鞭！"/>
     </LinearLayout>
 </RelativeLayout>

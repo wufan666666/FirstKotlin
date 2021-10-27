@@ -23,7 +23,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".himalaya.DetailActivity"></activity>
+
+        <activity android:name=".himalaya.PlayerActivity"></activity>
+        <activity
+            android:name=".himalaya.DetailActivity"
+            android:theme="@style/CatDetailTheme" />
         <activity android:name=".himalaya.HimalayaActivity" />
         <activity
             android:name=".materialdesign.CatDetailActivity"
@@ -35,6 +39,9 @@
         <activity android:name=".recycleview.RecycleViewActivity" />
         <activity android:name=".customView.SecondActivity" />
 
+        <service
+            android:name="com.ximalaya.ting.android.opensdk.player.service.XmPlayerService"
+            android:process=":player" />
         <service
             android:name=".Service.VolumeService"
             android:enabled="true"

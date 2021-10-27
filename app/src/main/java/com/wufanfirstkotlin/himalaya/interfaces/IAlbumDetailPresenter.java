@@ -1,10 +1,12 @@
 package com.wufanfirstkotlin.himalaya.interfaces;
 
+import com.wufanfirstkotlin.himalaya.base.IBasePresenter;
+
 /**
  * @author : wf
  * @date : 2021年10月15日 14:43
  */
-public interface IAlbumDetailPresenter {
+public interface IAlbumDetailPresenter extends IBasePresenter<IAlbumDetailViewCallback> {
     /**
      * 下拉刷新更多内容
      */
@@ -22,16 +24,5 @@ public interface IAlbumDetailPresenter {
      */
     void getAlbumDetail(int albumId,int page);
 
-    /**
-     * 注册UI通知的接口
-     * @param callback
-     */
-    void registerViewCallback(IAlbumDetailViewCallback callback);
-
-    /**
-     * 关闭
-     * @param callback
-     */
-    void unregisterViewCallback(IAlbumDetailViewCallback callback);
 
 }
