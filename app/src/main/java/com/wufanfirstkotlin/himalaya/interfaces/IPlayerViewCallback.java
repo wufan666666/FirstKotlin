@@ -2,6 +2,7 @@ package com.wufanfirstkotlin.himalaya.interfaces;
 
 import android.os.Trace;
 
+import com.ximalaya.ting.android.opensdk.model.track.Track;
 import com.ximalaya.ting.android.opensdk.player.service.XmPlayListControl;
 
 import java.util.List;
@@ -33,21 +34,21 @@ public interface IPlayerViewCallback {
 
     /**
      * 播放下一首
-     * @param trace
+     * @param track
      */
-    void nextPlay(Trace trace);
+    void nextPlay(Track track);
 
     /**
      * 播放上一首
-     * @param trace
+     * @param track
      */
-    void prePlay(Trace trace);
+    void prePlay(Track track);
 
     /**
      * 播放列表数据加载
      * @param list 播放器列表数据
      */
-    void onListLoaded(List<Trace> list);
+    void onListLoaded(List<Track> list);
 
     /**
      * 切换播放器播放模式
@@ -60,7 +61,7 @@ public interface IPlayerViewCallback {
      * @param currentProgress
      * @param total
      */
-    void onProgressChange(long currentProgress,long total);
+    void onProgressChange(int currentProgress,int total);
 
     /**
      * 广告正在加载
@@ -71,4 +72,10 @@ public interface IPlayerViewCallback {
      * 广告加载结束
      */
     void onAdLoaded();
+
+    /**
+     * 更新track
+     * @param track
+     */
+    void onUpdateTrack(Track track);
 }

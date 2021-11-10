@@ -55,4 +55,10 @@ public interface IPlayerPresenter extends IBasePresenter<IPlayerViewCallback> {
      * @param progress
      */
     void seekTo(int progress);
+
+    /**
+     * 是否正在播放
+     * @return
+     */
+    boolean isPlay();
 }

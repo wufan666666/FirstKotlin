@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wf.lifecycle">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".lifeCycle.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FirstKotlin">
+        <activity android:name=".databinding.room.RoomActivity"></activity>
+        <activity android:name=".databinding.basketballScore.BasketballScoreActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".databinding.recycleView.RecycleViewActivity"></activity>
+        <activity android:name=".databinding.editView.EditviewActivity" />
+        <activity android:name=".databinding.imageview.ImageviewActivity" />
+        <activity android:name=".databinding.simple.DatabindingActivity" />
+        <activity android:name=".liveData.fragment.FragmentActivity" />
+        <activity android:name=".liveData.simple.LiveDataActivity" />
+        <activity android:name=".viewModel.ViewModelActivity" />
+        <activity android:name=".lifeCycle.LifecycleServiceActivity" />
+        <activity android:name=".lifeCycle.MainActivity" />
+
+        <service android:name=".lifeCycle.MyLocationService" />
+    </application>
+
+</manifest>
