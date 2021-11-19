@@ -14,17 +14,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstKotlin">
-        <activity android:name=".databinding.room.RoomActivity"></activity>
-        <activity android:name=".databinding.basketballScore.BasketballScoreActivity">
+        <activity android:name=".navgation.menu.MenuActivity">
+
+        </activity>
+        <activity android:name=".navgation.deeplink.NavigationDeeplinkActivity">
+
+        </activity>
+        <activity android:name=".room.RoomActivity"></activity>
+        <activity android:name=".databinding.basketballScore.BasketballScoreActivity" />
+        <activity android:name=".databinding.recycleView.RecycleViewActivity" />
+        <activity android:name=".databinding.editView.EditviewActivity" />
+        <activity android:name=".databinding.imageview.ImageviewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".databinding.recycleView.RecycleViewActivity"></activity>
-        <activity android:name=".databinding.editView.EditviewActivity" />
-        <activity android:name=".databinding.imageview.ImageviewActivity" />
         <activity android:name=".databinding.simple.DatabindingActivity" />
         <activity android:name=".liveData.fragment.FragmentActivity" />
         <activity android:name=".liveData.simple.LiveDataActivity" />

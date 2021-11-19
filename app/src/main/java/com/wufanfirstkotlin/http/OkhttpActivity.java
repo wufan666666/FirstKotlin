@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.wufanfirstkotlin.BuildConfig;
 import com.wufanfirstkotlin.R;
 import com.wufanfirstkotlin.http.okhttp.IJsonDataListener;
 import com.wufanfirstkotlin.http.okhttp.MNokHttp;
@@ -162,7 +161,8 @@ public class OkhttpActivity extends AppCompatActivity {
                 message -> Log.e("zbc", "Retrofit====Message:" + message));
         httpLoggingInterceptor.setLevel(level);
         //Log.e("jsonObjectStr==", jsonObject.toString());
-        RequestBody requestBody = new FormBody.Builder().add("page", "1").add("count", "1").add("type", "video").build();
+        //RequestBody requestBody = new FormBody.Builder().add("page", "1").add("count", "1").add("type", "video").build();
+        RequestBody requestBody = RequestBody.create(mediaType, String.valueOf(jsonObject));
         Request request = new Request.Builder().url("https://api.apiopen.top/getJoke").post(requestBody).build();
         OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor)
                 .connectTimeout(10, TimeUnit.SECONDS)

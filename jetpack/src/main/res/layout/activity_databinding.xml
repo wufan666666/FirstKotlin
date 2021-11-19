@@ -8,7 +8,9 @@
         <variable
             name="cat"
             type="com.wf.lifecycle.databinding.simple.Cat" />
-        <import type="com.wf.lifecycle.databinding.simple.StarUtils"/>
+
+        <import type="com.wf.lifecycle.databinding.simple.StarUtils" />
+
         <variable
             name="onEventClick"
             type="com.wf.lifecycle.databinding.simple.OnEventOnclick" />
@@ -71,8 +73,8 @@
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="喜欢"
             android:onClick="@{onEventClick.onclick}"
+            android:text="喜欢"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
