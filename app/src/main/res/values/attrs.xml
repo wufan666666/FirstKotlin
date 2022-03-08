@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MyTextView">
+        <attr name="jamesText" format="string"/>
+        <attr name="jamesTextColor" format="color"/>
+        <attr name="jamesTextSize" format="dimension"/>
+        <attr name="jamesBackground" format="reference|color"/>
+        <attr name="jamesMaxLength" format="integer"/>
+
+        <attr name="jamesInputType">
+            <enum name="password" value="1"/>
+            <enum name="number" value="2"/>
+            <enum name="text" value="3"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="QQStepView">
+        <attr name="stepText" format="string"/>
+        <attr name="stepTextColor" format="color"/>
+        <attr name="stepTextSize" format="dimension"/>
+        <attr name="stepOuterColor" format="color"/>
+        <attr name="stepInnerColor" format="color"/>
+        <attr name="stepInnerProcess" format="integer"/>
+        <attr name="stepBetweenCircle" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="StackTextView">
+        <attr name="changeColor" format="color"/>
+        <attr name="originColor" format="color"/>
+    </declare-styleable>
+</resources>

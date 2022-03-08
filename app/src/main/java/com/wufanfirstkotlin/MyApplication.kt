@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import com.tencent.mmkv.MMKV
 import com.wufanfirstkotlin.sqlite.MyDBOpenHelper
 import com.ximalaya.ting.android.opensdk.constants.DTransferConstants
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest
@@ -31,6 +32,7 @@ open class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        MMKV.initialize(this)
         mXimalaya = CommonRequest.getInstanse();
         if (DTransferConstants.isRelease) {
             val mAppSecret = "8646d66d6abe2efd14f2891f9fd1c8af"

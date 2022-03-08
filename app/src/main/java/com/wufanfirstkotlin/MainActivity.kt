@@ -30,7 +30,9 @@ import com.wufanfirstkotlin.http.OkhttpActivity
 import com.wufanfirstkotlin.materialdesign.MaterialDesignActivity
 import com.wufanfirstkotlin.mvp.LoginMVPActivity
 import com.wufanfirstkotlin.recycleview.RecycleViewActivity
+import com.wufanfirstkotlin.sqlite.MMKV.MmkvActivity
 import com.wufanfirstkotlin.sqlite.SqliteActivity
+import com.wufanfirstkotlin.sqlite.sharedpreference.SharedpreferenceActivity
 import com.wufanfirstkotlin.viewPractice.CheckBoxActivity
 import com.wufanfirstkotlin.viewPractice.DatePickerActivity
 import com.wufanfirstkotlin.viewPractice.DialogActivity
@@ -57,6 +59,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var handler: Button
     private lateinit var materialDesign: Button
     private lateinit var himalaya: Button
+    private lateinit var SharedPreference: Button
+    private lateinit var mmkv: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,6 +81,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         handler = findViewById(R.id.handler)
         materialDesign = findViewById(R.id.materialDesign)
         himalaya = findViewById(R.id.himalaya)
+        SharedPreference = findViewById(R.id.SharedPreference)
+        mmkv = findViewById(R.id.mmkv)
         webviewbt.setOnClickListener(this)
         dialog.setOnClickListener(this)
         checkbox.setOnClickListener(this)
@@ -93,6 +99,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         handler.setOnClickListener(this)
         materialDesign.setOnClickListener(this)
         himalaya.setOnClickListener(this)
+        SharedPreference.setOnClickListener(this)
+        mmkv.setOnClickListener(this)
         testPermission(this)
     }
 
@@ -249,6 +257,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.materialDesign -> startActivity(Intent(this, MaterialDesignActivity::class.java))
 
             R.id.himalaya -> startActivity(Intent(this, HimalayaActivity::class.java))
+
+            R.id.SharedPreference -> startActivity(Intent(this, SharedpreferenceActivity::class.java))
+
+            R.id.mmkv -> startActivity(Intent(this, MmkvActivity::class.java))
 
 
         }

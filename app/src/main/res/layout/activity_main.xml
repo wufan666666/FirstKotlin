@@ -112,6 +112,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="materialDesign" />
+            <Button
+                android:id="@+id/SharedPreference"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SharedPreference" />
+
+            <Button
+                android:id="@+id/mmkv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="mmkv" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

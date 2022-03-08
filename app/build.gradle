@@ -82,5 +82,6 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
 
     implementation 'com.squareup.leakcanary:leakcanary-object-watcher-android:2.2'
+    implementation 'com.tencent:mmkv:1.0.23'
 
 }
