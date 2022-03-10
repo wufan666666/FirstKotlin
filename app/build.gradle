@@ -17,7 +17,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
-            abiFilters 'armeabi','armeabi-v8a'
+            abiFilters 'armeabi','armeabi-v8a','x86'
         }
         renderscriptTargetApi = 18
         renderscriptSupportModeEnabled = true

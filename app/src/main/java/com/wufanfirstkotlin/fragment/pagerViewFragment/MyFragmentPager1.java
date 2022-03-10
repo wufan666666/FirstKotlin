@@ -1,6 +1,7 @@
 package com.wufanfirstkotlin.fragment.pagerViewFragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.wufanfirstkotlin.R;
+import com.wufanfirstkotlin.fragment.kotlin.KotlinFragmentActivity;
 
 import java.util.ArrayList;
 
@@ -45,6 +47,12 @@ public class MyFragmentPager1 extends Fragment {
         Log.e("tag",list.get(0).drawable+"");
         image.setImageDrawable(list.get(0).drawable);
         num.setText(list.get(0).ibel);
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), KotlinFragmentActivity.class));
+            }
+        });
         return view;
     }
     class ItemBean{

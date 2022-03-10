@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".sqlite.MMKV.MmkvActivity"></activity>
+        <activity android:name=".fragment.kotlin.KotlinFragmentActivity"></activity>
+        <activity android:name=".sqlite.MMKV.MmkvActivity" />
         <activity android:name=".sqlite.sharedpreference.SharedpreferenceActivity" />
         <activity android:name=".himalaya.PlayerActivity" />
         <activity
@@ -55,7 +56,7 @@
         <activity android:name=".customView.CustomActivity" />
         <activity android:name=".http.OkhttpActivity" />
         <activity android:name=".sqlite.SqliteActivity" />
-        <activity android:name=".sqlite.kotlin_sqlite.SqliteKotlinActivity"/>
+        <activity android:name=".sqlite.kotlin_sqlite.SqliteKotlinActivity" />
         <activity android:name=".fragment.FragmentActivity" />
         <activity android:name=".Service.ServiceIntentActivity" />
         <activity android:name=".fragment.pagerViewFragment.FragmentPagerActivity" />
