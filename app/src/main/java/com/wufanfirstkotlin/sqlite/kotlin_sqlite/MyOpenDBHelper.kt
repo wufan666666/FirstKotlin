@@ -17,8 +17,16 @@ class MyOpenDBHelper(context: Context?) : SQLiteOpenHelper(context, "${Constants
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         L.e(TAG, "更新数据表employee")
         when (oldVersion) {
-            1 ->
-                db?.execSQL("Alter table  employee  add address varchar(20)")
+            1 -> {
+                db?.execSQL("Alter table  employee  add address Text")
+                db?.execSQL("Alter table  employee  add description Text")
+            }
+            2 -> {
+                db?.execSQL("Alter table  employee  add description Text")
+            }
+            3 -> {
+
+            }
         }
     }
 

@@ -21,6 +21,7 @@ import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.wufanfirstkotlin.Service.ServiceIntentActivity
 import com.wufanfirstkotlin.Service.ServiceJavaActivity
+import com.wufanfirstkotlin.asynctask.AsyncTaskActivity
 import com.wufanfirstkotlin.broadcast.BroadCastActivity
 import com.wufanfirstkotlin.customView.CustomActivity
 import com.wufanfirstkotlin.fragment.FragmentActivity
@@ -61,6 +62,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var himalaya: Button
     private lateinit var SharedPreference: Button
     private lateinit var mmkv: Button
+    private lateinit var asynctask: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,6 +81,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         mvp_login = findViewById(R.id.mvp_login)
         recycleView = findViewById(R.id.recycleView)
         handler = findViewById(R.id.handler)
+        asynctask = findViewById(R.id.asynctask)
         materialDesign = findViewById(R.id.materialDesign)
         himalaya = findViewById(R.id.himalaya)
         SharedPreference = findViewById(R.id.SharedPreference)
@@ -101,6 +104,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         himalaya.setOnClickListener(this)
         SharedPreference.setOnClickListener(this)
         mmkv.setOnClickListener(this)
+        asynctask.setOnClickListener(this)
         testPermission(this)
     }
 
@@ -261,6 +265,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.SharedPreference -> startActivity(Intent(this, SharedpreferenceActivity::class.java))
 
             R.id.mmkv -> startActivity(Intent(this, MmkvActivity::class.java))
+
+            R.id.asynctask -> startActivity(Intent(this, AsyncTaskActivity::class.java))
 
 
         }

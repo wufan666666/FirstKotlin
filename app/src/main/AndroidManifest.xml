@@ -23,8 +23,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".fragment.kotlin.KotlinFragmentActivity"></activity>
+        <activity android:name=".fragment.kotlin.fragmentwithviewpager2.FragmentWithViewpager2Activity"></activity>
+        <activity android:name=".fragment.kotlin.fragmentviewpager2.FragmentViewPagerActivity" />
+        <activity android:name=".fragment.kotlin.fragmentTransaction.FragmentTransactionActivity" />
+        <activity android:name=".fragment.kotlin.KotlinFragmentActivity" />
         <activity android:name=".sqlite.MMKV.MmkvActivity" />
+        <activity android:name=".customView.MoreFingerOperationActivity" />
+        <activity android:name=".asynctask.AsyncTaskActivity" />
         <activity android:name=".sqlite.sharedpreference.SharedpreferenceActivity" />
         <activity android:name=".himalaya.PlayerActivity" />
         <activity
@@ -39,7 +44,6 @@
         <activity android:name=".materialdesign.ToolbarActivity" />
         <activity android:name=".materialdesign.MaterialDesignActivity" />
         <activity android:name=".recycleview.RecycleViewActivity" />
-        <activity android:name=".customView.SecondActivity" />
 
         <service
             android:name="com.ximalaya.ting.android.opensdk.player.service.XmPlayerService"

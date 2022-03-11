@@ -18,6 +18,7 @@ public class MyDBOpenHelper extends SQLiteOpenHelper {
     }
 
     /**
+     * 回调函数
      * 数据库第一次创建时被调用
      * @param db
      */

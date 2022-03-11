@@ -94,7 +94,6 @@ public class HandlerActivity extends Activity {
                 mHandler.post(runnable);
             }
         });
-
         //方法2：postDelay
         runnableDelay = new Runnable(){
             @Override
@@ -102,7 +101,6 @@ public class HandlerActivity extends Activity {
                 tv.setText(getString(R.string.postRunnableDelay));
             }
         };
-
         Button handler_post_delay = this.findViewById(R.id.btnHandlerPostdelay);
         handler_post_delay.setOnClickListener(new OnClickListener() {
             @Override
@@ -110,7 +108,6 @@ public class HandlerActivity extends Activity {
                 mHandler.postDelayed(runnableDelay, 1000);  //1秒后执行
             }
         });
-
         //方法3：sendMessage
         Button btnSendMessage = this.findViewById(R.id.btnSendMessage);
         btnSendMessage.setOnClickListener(new OnClickListener() {
@@ -122,7 +119,6 @@ public class HandlerActivity extends Activity {
                 mHandler.sendMessage(msg);
             }
         });
-
         //方法4：Message.sendToTarget
         Button btnSendtoTarget = this.findViewById(R.id.btnSendtoTarget);
         btnSendtoTarget.setOnClickListener(new OnClickListener() {
@@ -142,7 +138,6 @@ public class HandlerActivity extends Activity {
                 tvOnOtherThread.setText(getString(R.string.postRunnableInThread));
             }
         };
-
         Button btnPost = this.findViewById(R.id.btnPost);
         btnPost.setOnClickListener(new OnClickListener() {
             @Override
@@ -156,7 +151,6 @@ public class HandlerActivity extends Activity {
                 }.start();
             }
         });
-
         //2.postDelay
         runnableDelayInThread = new Runnable(){
             @Override
@@ -164,7 +158,6 @@ public class HandlerActivity extends Activity {
                 tvOnOtherThread.setText(getString(R.string.postRunnableDelayInThread));
             }
         };
-
         Button btnPostDelay = this.findViewById(R.id.btnPostDelay);
         btnPostDelay.setOnClickListener(new OnClickListener() {
             @Override
@@ -178,7 +171,6 @@ public class HandlerActivity extends Activity {
                 }.start();
             }
         });
-
         //3.sendMessage
         Button btnSendMessage2 = this.findViewById(R.id.btnSendMessage2);
         btnSendMessage2.setOnClickListener(new OnClickListener() {
@@ -195,7 +187,6 @@ public class HandlerActivity extends Activity {
                 }.start();
             }
         });
-
         //方法4：Message.sendToTarget
         Button btnSendToTarget2 = this.findViewById(R.id.btnSendToTarget2);
         btnSendToTarget2.setOnClickListener(new OnClickListener() {
