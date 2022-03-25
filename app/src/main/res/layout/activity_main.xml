@@ -10,7 +10,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -129,6 +130,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="mmkv" />
+
+            <Button
+                android:id="@+id/surface"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="surface" />
+
+            <Button
+                android:id="@+id/scan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="扫描" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

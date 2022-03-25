@@ -40,6 +40,12 @@ public class CustomActivity extends AppCompatActivity implements View.OnClickLis
         valueAnimator.start();
 
         title_text.setOnClickListener(this);
+        mQqStepView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CustomActivity.this,MoreFingerOperateActivity.class));
+            }
+        });
     }
 
     @Override

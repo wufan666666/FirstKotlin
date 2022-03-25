@@ -63,6 +63,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'com.squareup.okhttp3:okhttp:3.14.9'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.android.volley:volley:1.2.1'
 
     implementation 'com.alibaba:fastjson:1.1.54.android'
     implementation 'com.squareup.okio:okio:1.15.0'
@@ -74,6 +75,9 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     implementation 'com.google.code.gson:gson:2.8.1'
     implementation 'com.github.hackware1993:MagicIndicator:1.7.0'
+    //二维码识别
+    //AndroidX 版本
+    implementation 'com.king.zxing:zxing-lite:2.0.3'
 
     //下拉加载上拉刷新
     implementation 'com.scwang.smart:refresh-layout-kernel:2.0.1'//核心必须依赖

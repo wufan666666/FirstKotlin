@@ -41,11 +41,11 @@ class BroadcastTestActivity : AppCompatActivity() {
         myBroadcast = MyBroadCast()
         setContentView(R.layout.activity_broadcast_test)
         getBroadCast = findViewById(R.id.getBroadCast)
+        //var filter = IntentFilter()
+        //filter.addAction("sendEmptyBroadCast")
+        //registerReceiver(myBroadcast, filter)
         getBroadCast.setOnClickListener {
-            var filter = IntentFilter()
-            filter.addAction("sendEmptyBroadCast")
-            registerReceiver(myBroadcast, filter)
-            //sendBroadcast(Intent("sendEmptyBroadCast"))
+            sendBroadcast(Intent("sendEmptyBroadCast"))
             startActivity(Intent(this, BroadCastActivity::class.java))
         }
 

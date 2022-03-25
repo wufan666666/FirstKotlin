@@ -1,7 +1,7 @@
 package com.wufanfirstkotlin.customView
 
+import android.graphics.Matrix
 import android.graphics.PointF
-import android.opengl.Matrix
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
@@ -13,8 +13,8 @@ class MoreFingerOperationActivity : AppCompatActivity(), View.OnTouchListener {
 
     lateinit var imageView: ImageView
 
-    val matrix = Matrix()
-    val saveMatrix = Matrix()
+    private val matrix = Matrix()
+    private val saveMatrix = Matrix()
 
     val startPoint = PointF()
     val midPoint = PointF()
@@ -22,7 +22,7 @@ class MoreFingerOperationActivity : AppCompatActivity(), View.OnTouchListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_more_finger_operation)
 
-        imageView = findViewById<ImageView>(R.id.imageView)
+        imageView = findViewById(R.id.imageView)
 
         imageView.setOnTouchListener(this)
     }
@@ -32,11 +32,11 @@ class MoreFingerOperationActivity : AppCompatActivity(), View.OnTouchListener {
         val image = v as ImageView
         when (event?.action?.and(MotionEvent.ACTION_MASK)) {
             MotionEvent.ACTION_DOWN -> {
-                matrix.apply {
-                    image.imageMatrix
-                }
+                matrix.set(v.imageMatrix)
+                saveMatrix.set(matrix)
 
             }
+
         }
 
         return true

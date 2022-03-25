@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wufanfirstkotlin">
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -23,12 +24,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".fragment.kotlin.fragmentwithviewpager2.FragmentWithViewpager2Activity"></activity>
+        <activity android:name=".http.TestOKHttpActivity"></activity>
+        <activity
+            android:name=".scan.CaptureActivity"
+            />
+        <activity android:name=".scan.ScanQRActivity" />
+        <activity android:name=".surfaceview.SurfaceViewActivity" />
+        <activity android:name=".handler.HandlerThreadActivity" />
+        <activity android:name=".fragment.kotlin.fragmentwithviewpager2.FragmentWithViewpager2Activity" />
         <activity android:name=".fragment.kotlin.fragmentviewpager2.FragmentViewPagerActivity" />
         <activity android:name=".fragment.kotlin.fragmentTransaction.FragmentTransactionActivity" />
         <activity android:name=".fragment.kotlin.KotlinFragmentActivity" />
         <activity android:name=".sqlite.MMKV.MmkvActivity" />
         <activity android:name=".customView.MoreFingerOperationActivity" />
+        <activity android:name=".customView.MoreFingerOperateActivity" />
         <activity android:name=".asynctask.AsyncTaskActivity" />
         <activity android:name=".sqlite.sharedpreference.SharedpreferenceActivity" />
         <activity android:name=".himalaya.PlayerActivity" />
@@ -44,19 +53,6 @@
         <activity android:name=".materialdesign.ToolbarActivity" />
         <activity android:name=".materialdesign.MaterialDesignActivity" />
         <activity android:name=".recycleview.RecycleViewActivity" />
-
-        <service
-            android:name="com.ximalaya.ting.android.opensdk.player.service.XmPlayerService"
-            android:process=":player" />
-        <service
-            android:name=".Service.VolumeService"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name=".Service.IntentServiceImpl"
-            android:enabled="true"
-            android:exported="true" />
-
         <activity android:name=".customView.CustomActivity" />
         <activity android:name=".http.OkhttpActivity" />
         <activity android:name=".sqlite.SqliteActivity" />
@@ -99,6 +95,18 @@
         <activity android:name=".viewPractice.WebViewActivity" />
 
         <uses-library android:name="android.test.runner" />
+
+        <service
+            android:name="com.ximalaya.ting.android.opensdk.player.service.XmPlayerService"
+            android:process=":player" />
+        <service
+            android:name=".Service.VolumeService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".Service.IntentServiceImpl"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

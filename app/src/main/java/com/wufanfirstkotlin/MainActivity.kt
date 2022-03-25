@@ -31,9 +31,11 @@ import com.wufanfirstkotlin.http.OkhttpActivity
 import com.wufanfirstkotlin.materialdesign.MaterialDesignActivity
 import com.wufanfirstkotlin.mvp.LoginMVPActivity
 import com.wufanfirstkotlin.recycleview.RecycleViewActivity
+import com.wufanfirstkotlin.scan.ScanQRActivity
 import com.wufanfirstkotlin.sqlite.MMKV.MmkvActivity
 import com.wufanfirstkotlin.sqlite.SqliteActivity
 import com.wufanfirstkotlin.sqlite.sharedpreference.SharedpreferenceActivity
+import com.wufanfirstkotlin.surfaceview.SurfaceViewActivity
 import com.wufanfirstkotlin.viewPractice.CheckBoxActivity
 import com.wufanfirstkotlin.viewPractice.DatePickerActivity
 import com.wufanfirstkotlin.viewPractice.DialogActivity
@@ -63,6 +65,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var SharedPreference: Button
     private lateinit var mmkv: Button
     private lateinit var asynctask: Button
+    private lateinit var surface: Button
+    private lateinit var scan: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,6 +90,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         himalaya = findViewById(R.id.himalaya)
         SharedPreference = findViewById(R.id.SharedPreference)
         mmkv = findViewById(R.id.mmkv)
+        surface = findViewById(R.id.surface)
+        scan = findViewById(R.id.scan)
         webviewbt.setOnClickListener(this)
         dialog.setOnClickListener(this)
         checkbox.setOnClickListener(this)
@@ -105,6 +111,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         SharedPreference.setOnClickListener(this)
         mmkv.setOnClickListener(this)
         asynctask.setOnClickListener(this)
+        surface.setOnClickListener(this)
+        scan.setOnClickListener(this)
         testPermission(this)
     }
 
@@ -267,6 +275,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.mmkv -> startActivity(Intent(this, MmkvActivity::class.java))
 
             R.id.asynctask -> startActivity(Intent(this, AsyncTaskActivity::class.java))
+
+            R.id.surface -> startActivity(Intent(this, SurfaceViewActivity::class.java))
+
+            R.id.scan -> startActivity(Intent(this, ScanQRActivity::class.java))
 
 
         }

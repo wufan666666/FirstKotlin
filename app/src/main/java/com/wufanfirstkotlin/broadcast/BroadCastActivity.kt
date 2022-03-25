@@ -25,12 +25,12 @@ class BroadCastActivity : AppCompatActivity() {
         broadcastbtntest = findViewById(R.id.intent)
         broadcastbtnowner = findViewById(R.id.intent_owner)
         myBroadcast= MyBroadCast()
-       var filter= IntentFilter()
-       filter.addAction("sendEmptyBroadCast")
+       var filter= IntentFilter("sendEmptyBroadCast")
+       //filter.addAction("sendEmptyBroadCast")
        registerReceiver(myBroadcast,filter)
         broadcastbtn.setOnClickListener {
-            sendBroadcast(Intent("sendEmptyBroadCast"))
-            Toast.makeText(applicationContext,"发送了广播",Toast.LENGTH_SHORT).show()
+            //sendBroadcast(Intent("sendEmptyBroadCast"))
+            //Toast.makeText(applicationContext,"发送了广播",Toast.LENGTH_SHORT).show()
         }
         broadcastbtnowner.setOnClickListener {
             startActivity(Intent(this,BroadCastActivity::class.java))

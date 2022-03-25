@@ -1,8 +1,10 @@
 package com.wufanfirstkotlin.http;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +14,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.wufanfirstkotlin.R;
+import com.wufanfirstkotlin.himalaya.utils.L;
 import com.wufanfirstkotlin.http.okhttp.IJsonDataListener;
 import com.wufanfirstkotlin.http.okhttp.MNokHttp;
 import com.wufanfirstkotlin.http.okhttp.ResponseClass;
@@ -22,13 +31,13 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.lang.ref.SoftReference;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
-import java.util.logging.LoggingPermission;
+
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -77,7 +86,8 @@ public class OkhttpActivity extends AppCompatActivity {
         okhttp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickOKhttp();
+                //clickOKhttp();
+                startActivity(new Intent(OkhttpActivity.this,TestOKHttpActivity.class));
             }
         });
         retrofit.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +102,72 @@ public class OkhttpActivity extends AppCompatActivity {
                 sendRequest();
             }
         });
+        volley.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickVolley();
+            }
+        });
+    }
+
+    /**
+     * 这里拿到的RequestQueue是一个请求队列对象，
+     * 它可以缓存所有的 HTTP 请求，然后按照一定的算法并发地发出这些请求。RequestQueue 内部的设计就是非常合适高并发的，
+     * 因此我们不必为每一次 HTTP 请求都创建一个RequestQueue对象，这是非常浪费资源的，基本上在每一个需要和网络交互的 Activity 中创建一个RequestQueue对象就足够了
+     */
+    private void clickVolley() {
+        RequestQueue mQueue = Volley.newRequestQueue(this);
+
+        StringRequest stringRequest = new StringRequest("https://www.baidu.com", new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+                L.e("volley1", s);
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                L.e("volley2", volleyError.getMessage());
+            }
+        });
+        //mQueue.add(stringRequest);
+
+        StringRequest request = new StringRequest(com.android.volley.Request.Method.POST, "https://www.baidu.com",
+                new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap mm = new HashMap<String, String>();
+                mm.put("param1", "value1");
+                mm.put("param2", "value2");
+                mm.put("param3", "value3");
+                return mm;
+            }
+        };
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest("https://www.tianqiapi.com/api/?version=v1",
+                null, new com.android.volley.Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                System.out.println(jsonObject.toString());
+                L.e("TAG",jsonObject.toString());
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+
+            }
+        });
+
+        mQueue.add(jsonObjectRequest);
     }
 
     private void sendRequest() {
@@ -181,7 +257,8 @@ public class OkhttpActivity extends AppCompatActivity {
                 //Log.e("onResponse", response.toString());
                 int code = response.code();
                 String data = response.body().string();
-                //Log.e("onResponse", data);
+                Log.e("onResponse", data);
+                Toast.makeText(OkhttpActivity.this,"response",Toast.LENGTH_SHORT).show();
                 if (code == 200) {
                     message.what = 0x11;
                     message.obj = response.toString();

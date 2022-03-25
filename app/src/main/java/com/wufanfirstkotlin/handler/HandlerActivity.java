@@ -5,6 +5,7 @@ package com.wufanfirstkotlin.handler;
  * @date : 2021年08月25日 17:24
  */
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,9 +16,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.cardview.widget.CardView;
+import androidx.annotation.NonNull;
 
+import com.wufanfirstkotlin.BaseActivity;
 import com.wufanfirstkotlin.R;
+import com.wufanfirstkotlin.http.OkhttpActivity;
+
+import java.util.HashSet;
 
 /**
  * @author wxb
@@ -33,7 +38,7 @@ import com.wufanfirstkotlin.R;
  * 3.使用sendMessage
  * 4.使用Message.sentToTarget
  */
-public class HandlerActivity extends Activity {
+public class HandlerActivity extends BaseActivity implements Handler.Callback {
     private Runnable runnable=null;
     private Runnable runnableDelay=null;
     private Runnable runnableInThread=null;
@@ -47,25 +52,22 @@ public class HandlerActivity extends Activity {
     public final static int MESSAGE_WXB_3 = 3;
     public final static int MESSAGE_WXB_4 = 4;
     public final static int MESSAGE_WXB_5 = 5;
+    /**
+     * 方式二
+     */
+    private BaseActivity.Companion.InnerHandler mInnerHandler = new Companion.InnerHandler(this);
+    @Override
+    public boolean handleMessage(@NonNull Message msg) {
+        return false;
+    }
 
-
+    /**
+     * 方式一
+     */
     private static final Handler mHandler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            switch(msg.what){
-                case MESSAGE_WXB_1:
-                    tv.setText("invoke sendMessage in main thread");
-                    break;
-                case MESSAGE_WXB_2:
-                    tv.setText("Message.sendToTarget in main thread");
-                    break;
-                case MESSAGE_WXB_3:
-                    tvOnOtherThread.setText("invoke sendMessage in other thread");
-                    break;
-                case MESSAGE_WXB_4:
-                    tvOnOtherThread.setText("Message.sendToTarget in other thread");
-                    break;
-            }
+
             super.handleMessage(msg);
         }
     };
@@ -77,8 +79,12 @@ public class HandlerActivity extends Activity {
         tv = this.findViewById(R.id.tvOnMainThread);
         tv.setElevation(0.2f);
         tvOnOtherThread = this.findViewById(R.id.tvOnOtherThread);
-        CardView cardView = findViewById(R.id.cardView);
-        cardView.setCardElevation(10);
+        findViewById(R.id.next).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HandlerActivity.this,HandlerThreadActivity.class));
+            }
+        });
 
         //方法1.post
         runnable = new Runnable(){
@@ -91,6 +97,10 @@ public class HandlerActivity extends Activity {
         handler_post.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                // 不建议直接new Message，Message内部保存了一个缓存的消息池，我们可以用obtain从缓存池获得一个消息
+                // Message使用完后系统会调用recycle回收，如果自己new很多Message，每次使用完后系统放入缓存池，会占用很多内存的。
+                Message message = Message.obtain();
+                Message message1 = mHandler.obtainMessage();
                 mHandler.post(runnable);
             }
         });
@@ -134,6 +144,7 @@ public class HandlerActivity extends Activity {
         //在其他线程中发送消息
         //1.post
         runnableInThread = new Runnable(){
+            @Override
             public void run(){
                 tvOnOtherThread.setText(getString(R.string.postRunnableInThread));
             }
@@ -201,5 +212,18 @@ public class HandlerActivity extends Activity {
                 }.start();
             }
         });
+    }
+
+    /**
+     * 使用mHandler.removeCallbacksAndMessages(null);是移除消息队列中所有消息和所有的Runnable。
+     * 当然也可以使用mHandler.removeCallbacks();或mHandler.removeMessages()；来移除指定的Runnable和Message。
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mInnerHandler != null) {
+            mInnerHandler.removeCallbacksAndMessages(null);
+            mInnerHandler = null;
+        }
     }
 }
