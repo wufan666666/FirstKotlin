@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FirstKotlin</string>
+    <string name="app_name">第一个小程序</string>
     <string name="webview">webView</string>
     <string name="title_activity_login_m_v_p">LoginMVPActivity</string>
     <string name="prompt_email">Email</string>

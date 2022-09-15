@@ -2,15 +2,26 @@ package com.wufanfirstkotlin
 
 import android.app.Application
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.TextUtils
+import com.mob.MobSDK
+import com.mob.pushsdk.MobPush
+import com.mob.pushsdk.MobPushCustomMessage
+import com.mob.pushsdk.MobPushNotifyMessage
+import com.mob.pushsdk.MobPushReceiver
 import com.tencent.mmkv.MMKV
+import com.wufanfirstkotlin.himalaya.utils.L
 import com.wufanfirstkotlin.sqlite.MyDBOpenHelper
 import com.ximalaya.ting.android.opensdk.constants.DTransferConstants
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest
 import com.ximalaya.ting.android.opensdk.datatrasfer.DeviceInfoProviderDefault
 import com.ximalaya.ting.android.opensdk.datatrasfer.IDeviceInfoProvider
 import com.ximalaya.ting.android.opensdk.player.XmPlayerManager
+import org.json.JSONException
+import org.json.JSONObject
 
 open class MyApplication : Application() {
     lateinit var myDBHelper: MyDBOpenHelper
@@ -49,6 +60,58 @@ open class MyApplication : Application() {
         //初始化喜马拉雅播放器
         XmPlayerManager.getInstance(this).init()
         sContext = baseContext
+        MobSDK.submitPolicyGrantResult(true, null)
+        //获取推送RegistrationId
+        MobPush.getRegistrationId { rid ->
+            L.e("RegistrationId==", rid + "")
+        }
+
+        MobPush.addPushReceiver(object : MobPushReceiver {
+            override fun onCustomMessageReceive(context: Context, message: MobPushCustomMessage) {
+                //接收自定义消息
+            }
+
+            override fun onNotifyMessageReceive(context: Context, message: MobPushNotifyMessage) {
+                //接收通知消息
+                L.e("MobPush2 =接收通知消息=", message.toString() + "")
+            }
+
+            override fun onNotifyMessageOpenedReceive(
+                context: Context,
+                message: MobPushNotifyMessage
+            ) {
+                //接收通知消息被点击事件
+                L.e("MobPush =接收通知消息被点击事件=", message.toString() + "")
+            }
+
+            override fun onTagsCallback(
+                context: Context,
+                tags: Array<String>,
+                operation: Int,
+                errorCode: Int
+            ) {
+                //接收tags的增改删查操作
+                L.e(
+                    "MobPush =接收tags的增改删查操作=",
+                    "tags==$tags==operation==$operation==errorCode==$errorCode"
+                )
+            }
+
+            override fun onAliasCallback(
+                context: Context,
+                alias: String,
+                operation: Int,
+                errorCode: Int
+            ) {
+                //接收alias的增改删查操作
+                L.e(
+                    "MobPush =接收alias的增改删查操作=",
+                    "alias==$alias==operation==$operation==errorCode==$errorCode"
+                )
+            }
+        })
+
+
     }
 
 

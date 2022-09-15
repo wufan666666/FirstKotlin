@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.mob.sdk'
 }
 
 android {
@@ -94,4 +95,25 @@ dependencies {
     implementation 'com.tencent:mmkv:1.0.23'
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
+}
+
+MobSDK {
+    appKey "35dd02a89a4fb"
+    appSecret "bfce607ddc87f0273d78c88411f326d5"
+    MobPush {
+        debugLevel 4
+        devInfo {
+            HUAWEI {
+                appId "106201515"
+                version "6.1.0.300"
+            }
+            XIAOMI {
+                appId "2882303761518165380"
+                appKey "5821816528380"
+            }
+//            FCM {
+//                iconRes "FCM通知栏显示的icon"
+//            }
+        }
+    }
 }

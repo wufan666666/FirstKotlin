@@ -1,12 +1,18 @@
 package com.wufanfirstkotlin.viewPractice
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.ViewGroup
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.king.zxing.util.LogUtils
 import com.wufanfirstkotlin.R
+
 
 /**
  *
@@ -82,7 +88,10 @@ class WebViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_webview)
         mLayout = findViewById(R.id.lin)
-        val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
         webView = WebView(applicationContext)
         webView.setLayoutParams(params)
         mLayout.addView(webView)
@@ -92,12 +101,61 @@ class WebViewActivity : AppCompatActivity() {
         webViewSetting.useWideViewPort = true //将图片调整到适合webview的大小
         webViewSetting.loadWithOverviewMode = true // 缩放至屏幕的大小
         webView.settings.javaScriptEnabled = true
-        webView.loadUrl("file:///android_asset/hello.html")
-        webView.loadUrl("https://m.baidu.com")
+
+        //webView.loadUrl("https://m.baidu.com")
+        /*webView.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+                val uri: Uri = Uri.parse(url)
+                Log.e("打印Scheme", uri.getScheme().toString() + "==" + url)
+                return if ("http" != uri.getScheme() || "https" != uri.getScheme()) {
+                    false
+                } else {
+                    view.loadUrl(url)
+                    false
+                }
+            }
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+            }
+        }*/
+        webView.loadUrl("https://www.baidu.com");
+        /*webView.setWebViewClient(WebViewClient(){
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                try{
+                    if(url.startsWith("http")||url.startsWith("https")){
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(intent);
+                        return true;
+                    }
+                }catch (Exception e){
+                    return true;
+                }
+                webView.loadUrl(url);
+                return true;
+            }*/
+        webView.loadUrl("file:///android_asset/test.html")
+        webView.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                try {
+                    if (url?.startsWith("firstkotlin") == true || url?.startsWith("https") == true) {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        startActivity(intent);
+                        return true;
+                    }
+                } catch (e: Exception) {
+                    return true;
+                }
+                webView.loadUrl(url!!);
+                return true;
+            }
+        }
+
     }
 
+
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK&&webView.canGoBack()){
+        if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
             webView.goBack()
             return true
         }

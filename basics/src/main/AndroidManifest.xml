@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fx.basics">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/FirstKotlin">
+        <activity
+            android:name=".a4_linearlayout.LinearLayoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".a4_date_time.DateTimeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".a3_scrollview.ScrollViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".a3_listview.upgrade.ListViewUpgradeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".a3_listview.basic.ListViewBasicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".a2_radiobutton_checkbox.RadioButtonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".a2_imageview.ImageViewUpgradeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".a2_imageview.ImageViewBasicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".a1_textview.TextViewUpgradeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".a2_editview.EditViewBasicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".a1_textview.TextViewBasicsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".a1_button.ButtonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

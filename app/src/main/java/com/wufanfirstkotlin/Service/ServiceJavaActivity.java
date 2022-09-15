@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -76,6 +77,14 @@ public class ServiceJavaActivity extends AppCompatActivity {
             }
         });
         initView();
+        findViewById(R.id.service_save).setOnClickListener(l->{
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                Toast.makeText(this,"1111",Toast.LENGTH_SHORT).show();
+                startForegroundService(new Intent(this,NotifyingService.class));
+            }else {
+                startService(new Intent(this,NotifyingService.class));
+            }
+        });
     }
 
     ServiceConnection connection = new ServiceConnection() {

@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         app:changeColor="#FF0000"
         app:originColor="@color/black"
-        android:text="雄霸天下"/>
+        android:text="雄霸天下,风云无双，杀！！！！"/>
     <com.wufanfirstkotlin.customView.MoveCircleView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

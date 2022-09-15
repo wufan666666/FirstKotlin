@@ -1,3 +1,4 @@
 include ':app'
 rootProject.name = "FirstKotlin"
 include ':jetpack'
+include ':basics'

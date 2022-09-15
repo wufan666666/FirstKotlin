@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.Gravity
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.view.PreviewView
@@ -189,7 +190,8 @@ class CaptureActivity : AppCompatActivity(), OnScanResultCallback {
      * @return 返回true表示拦截，将不自动执行后续逻辑，为false表示不拦截，默认不拦截
      */
     override fun onScanResultCallback(result: Result): Boolean {
-        return false
+        Toast.makeText(this,result.text,Toast.LENGTH_SHORT).show()
+        return true
     }
 
     companion object {

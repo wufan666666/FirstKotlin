@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="himalaya_color">#509FC3</color>
+    <color name="blue">#0FB2BF</color>
+    <color name="gray">#F8F8F8</color>
+    <color name="ziti">#6C6E6E</color>
 </resources>

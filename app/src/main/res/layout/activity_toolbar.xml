@@ -12,9 +12,9 @@
         android:layout_height="?attr/actionBarSize"
         android:background="#42B555"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:navigationIcon="@mipmap/open"
-        >
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"

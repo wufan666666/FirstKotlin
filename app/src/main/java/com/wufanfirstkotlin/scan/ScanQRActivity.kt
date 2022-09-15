@@ -15,7 +15,7 @@ class ScanQRActivity : BaseActivity() {
         setContentView(R.layout.activity_scan_qr)
 
         findViewById<Button>(R.id.open_scan).setOnClickListener {
-            startActivityForResult(Intent(this, CaptureActivity::class.java),REQUEST_CODE_SCAN)
+            startActivityForResult(Intent(this, CaptureActivity::class.java), REQUEST_CODE_SCAN)
         }
     }
 
@@ -23,8 +23,10 @@ class ScanQRActivity : BaseActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        val result:String? = CameraScan.parseScanResult(data)
-        result?.let { toast(it) }
+        val result: String? = CameraScan.parseScanResult(data)
+        result?.let {
+            //toast(it)
+        }
 
     }
 }

@@ -1,5 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="../../.gradle/caches/transforms-3/54b01a5a8da0e4044860b9784e06641b/transformed/jetified-zxing-lite-2.0.3/res/layout/zxl_capture.xml" value="0.33251231527093594" />
+        <entry key="app/src/main/res/drawable/bottom_lin.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/center_lin.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/circle_linearlayout.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/circle_linearlayout_line.xml" value="0.196" />
+        <entry key="app/src/main/res/layout/activity_bluetooth.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_capture.xml" value="0.33251231527093594" />
+        <entry key="app/src/main/res/layout/activity_cat_detail.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/activity_custom.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/activity_detail_data.xml" value="0.29713552800342025" />
+        <entry key="app/src/main/res/layout/activity_drawer.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/activity_floating_action_button.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/activity_fragment.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/activity_fragment_pager.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/activity_fragment_transaction.xml" value="0.13643961554534056" />
+        <entry key="app/src/main/res/layout/activity_fragment_view_pager.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/activity_fragment_with_viewpager2.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/activity_history.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/activity_intent_service.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_material_design.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/activity_scan_qr.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/activity_service.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/activity_test_data.xml" value="0.29713552800342025" />
+        <entry key="app/src/main/res/layout/activity_toolbar.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/fragment_all_data.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/fragment_blank.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/layout/fragment_history_data.xml" value="0.26763574176998717" />
+        <entry key="app/src/main/res/layout/fragment_no_data.xml" value="0.29713552800342025" />
+        <entry key="app/src/main/res/layout/navigation_menu_header.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/menu/navigation.xml" value="0.30867892261650276" />
+        <entry key="app/src/main/res/menu/toolbar.xml" value="0.30867892261650276" />
+        <entry key="basics/src/main/res/drawable/bbuton_danger_rounded.xml" value="0.196" />
+        <entry key="basics/src/main/res/drawable/btn_bg1.xml" value="0.196" />
+        <entry key="basics/src/main/res/drawable/ic_launcher_background.xml" value="0.196" />
+        <entry key="basics/src/main/res/drawable/rad_btn_selctor.xml" value="0.196" />
+        <entry key="basics/src/main/res/drawable/txt_radiuborder.xml" value="0.196" />
+        <entry key="basics/src/main/res/drawable/txt_rectborder.xml" value="0.196" />
+        <entry key="basics/src/main/res/layout/activity_button.xml" value="0.30867892261650276" />
+        <entry key="basics/src/main/res/layout/activity_date_time.xml" value="0.37604166666666666" />
+        <entry key="basics/src/main/res/layout/activity_edit_view_basic.xml" value="0.30867892261650276" />
+        <entry key="basics/src/main/res/layout/activity_image_view_basic.xml" value="0.30867892261650276" />
+        <entry key="basics/src/main/res/layout/activity_image_view_upgrade.xml" value="0.29713552800342025" />
+        <entry key="basics/src/main/res/layout/activity_linear_layout.xml" value="0.37604166666666666" />
+        <entry key="basics/src/main/res/layout/activity_list_view_basic.xml" value="0.29713552800342025" />
+        <entry key="basics/src/main/res/layout/activity_list_view_upgrade.xml" value="0.19880290722530997" />
+        <entry key="basics/src/main/res/layout/activity_main.xml" value="0.29713552800342025" />
+        <entry key="basics/src/main/res/layout/activity_radio_button.xml" value="0.2543822146216332" />
+        <entry key="basics/src/main/res/layout/activity_scroll_view.xml" value="0.25" />
+        <entry key="basics/src/main/res/layout/activity_text_view.xml" value="0.21889696451474988" />
+        <entry key="basics/src/main/res/layout/activity_text_view_upgrade.xml" value="0.30867892261650276" />
+        <entry key="basics/src/main/res/layout/item_list.xml" value="0.19880290722530997" />
+        <entry key="basics/src/main/res/layout/item_listview.xml" value="0.30867892261650276" />
+        <entry key="basics/src/main/res/layout/view_footer.xml" value="0.19880290722530997" />
+        <entry key="basics/src/main/res/layout/view_header.xml" value="0.19880290722530997" />
+        <entry key="basics/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.196" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
